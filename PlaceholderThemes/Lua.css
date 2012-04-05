@@ -1,0 +1,92 @@
+/*
+    @theme Lua Placeholder
+    @placeholder Lua
+    @author Bernhard Rosensteiner <brosensteiner@gmail.com>
+*/
+not(lua.comment, lua.string) {
+	spell-check: disabled;
+}
+
+lua.shebang {
+	color: #d44950;
+	font-weight: bold;
+}
+
+lua.metamethod {
+	color: #d44950;
+}
+
+lua.function-argument.io-read > lua.constant.numeric,
+lua.string.quoted > lua.keyword.additional.PEG,
+lua.function-argument.io-read > lua.string.quoted > lua.keyword.additional.io-read,
+lua.function-argument.io-open > lua.string.quoted > lua.keyword.additional.io-open,
+lua.function-argument.io-open > lua.string.quoted > lua.keyword.additional.io-popen,
+lua.function-argument.io-popen > lua.string.quoted > lua.keyword.additional.io-popen,
+lua.function-argument.file-setvbuf > lua.string.quoted > lua.keyword.additional.file-setbuf,
+lua.function-argument.file-seek > lua.string.quoted > lua.keyword.additional.file-seek,
+lua.function-argument.collectgarbage > lua.string.quoted > lua.keyword.additional.collectgarbage {
+	color: #d44950;
+}
+
+lua.keyword.additional.magic-character {
+	color: #86bcff;
+	font-weight: bold;
+}
+
+lua.global.variable,
+lua.variable,
+lua.function.name {
+	color: #7ac54d;
+	font-weight: bold;
+}
+
+lua.library-call,
+lua.loop.body > lua.keyword.control.in + lua.language.general-word {
+	color: #4e279a;
+	font-weight: bold;
+}
+
+lua.local-function + lua.balanced.parenthesis > lua.language.separator.comma,
+lua.function.name + lua.balanced.parenthesis > lua.language.separator.comma,
+lua.loop.body > lua.language.separator.comma,
+lua.function-argument > lua.language.separator.comma {
+	color: #f93232;
+}
+
+lua.punctuation.open-parenthesis,
+lua.punctuation.close-parenthesis {
+	color: #5e5f5f;
+	font-weight: normal;
+}
+
+lua.keyword.operator.call,
+lua.punctuation.open-brace,
+lua.punctuation.close-brace,
+lua.punctuation.open-bracket,
+lua.punctuation.close-bracket,
+lua.function-call.table-key,
+lua.punctuation.table-call {
+	color: #7f7f7f;
+	font-weight: bold;
+}
+
+lua.function-call.table-key,
+lua.table.constructor {
+	background-color: #f3f2ff;
+}
+
+lua.table.index {
+	background-color: #f3f2ff;
+}
+
+lua.separator {
+	color: #f93232;
+}
+
+lua.constant.math {
+	color: #7653c1;
+}
+
+ lua.keyword.character-class {
+ 		color: #d44950;
+ }

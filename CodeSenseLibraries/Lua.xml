@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+@description Defines the Lua code sense libraries
+@author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
+@copyright 	 The MIT License
+
+Copyright (c) 2010 Bernhard Rosensteiner
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<codesense version="1.0">
+
+	<behavior>
+		<append-dynamic>
+			<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+			<transform-into>(?1:$1:\( $1 \) $0)</transform-into>
+    	</append-dynamic>
+    	<confirm characters=")" />
+	</behavior>
+    
+	
+   	<set name="com.rosensteiner.Lua.functions" casesensitive="true">
+   	
+   		<completion string="assert" />
+   		<completion string="collectgarbage" />
+   		<completion string="dofile" />
+   		<completion string="error" />
+   		<completion string="getfenv" />
+   		<completion string="getmetatable" />
+   		<completion string="ipairs" />
+   		<completion string="load" />
+   		<completion string="loadfile" />
+   		<completion string="loadstring" />
+   		<completion string="next" />
+   		<completion string="pairs" />
+   		<completion string="pcall" />
+   		<completion string="print" />
+   		<completion string="rawequal" />
+   		<completion string="rawget" />
+   		<completion string="rawset" />
+   		
+   		<completion string="select">
+   			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:"#"}, ${2:...} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   				<partial-confirm characters="." />
+   			</behavior>
+   		</completion>
+   			
+   		<completion string="setfenv" />
+   		<completion string="setmetatable" />
+   		
+   		<completion string="tonumber">
+   			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:e}${2:, ${3:base}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   				<partial-confirm characters="." />
+   			</behavior>
+   		</completion>
+   		
+   		<completion string="tostring" />
+   		<completion string="type" />
+   		
+   		<completion string="unpack">
+   			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:list}${2:, ${3:i}${4:, ${5:j}}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   				<partial-confirm characters="." />
+   			</behavior>
+   		</completion>
+   		
+   		<completion string="xpcall" />	
+   		
+	</set>
+	
+<!--standard and additional libraries--> 	
+	<set name="com.rosensteiner.Lua.libraries" casesensitive="true">
+	
+		<behavior>
+   			<append-static></append-static>
+   		</behavior>
+   			
+  		<completion string="luaL" />
+  		<completion string="lua" />
+   		<completion string="io" />
+   		<completion string="package" />
+   		<completion string="string" />
+   		<completion string="table" />
+   		<completion string="math" />
+   		<completion string="os" />
+   		<completion string="debug" />
+   		<completion string="coroutine" />
+   		<completion string="lpeg" />
+   		<completion string="re" />
+	</set>	
+	
+<!--luaL functions-->	
+	<set name="com.rosensteiner.Lua.luaL-functions" casesensitive="true">
+  		<completion string="addchar" />
+   		<completion string="addlstring" />
+   		<completion string="addsize" />
+   		<completion string="addstring" />
+   		<completion string="addvalue" />
+   		<completion string="argcheck" />
+   		<completion string="argerror" />
+   		<completion string="Buffer" />
+   		<completion string="buffinit" />
+   		<completion string="callmeta" />
+   		<completion string="checkany" />
+   		<completion string="checkint" />
+   		<completion string="checkinteger" />
+   		<completion string="checklong" />
+   		<completion string="checklstring" />
+   		<completion string="checknumber" />
+   		<completion string="checkoption" />
+   		<completion string="checkstack" />
+   		<completion string="checkstring" />
+   		<completion string="checktype" />
+   		<completion string="checkudata" />
+   		<completion string="dofile" />
+   		<completion string="dostring" />
+   		<completion string="error" />
+   		<completion string="getmetafield" />
+   		<completion string="getmetatable" />
+   		<completion string="gsub" />
+   		<completion string="loadbuffer" />
+   		<completion string="loadfile" />
+   		<completion string="loadstring" />
+   		<completion string="newmetatable" />
+   		<completion string="newstate" />
+   		<completion string="openlibs" />
+   		<completion string="optint" />
+   		<completion string="optinteger" />
+   		<completion string="optlong" />
+   		<completion string="optlstring" />
+   		<completion string="optnumber" />
+   		<completion string="optstring" />
+   		<completion string="prepbuffer" />
+   		<completion string="pushresult" />
+   		<completion string="ref" />
+   		<completion string="Reg" />
+   		<completion string="register" />
+   		<completion string="typename" />
+   		<completion string="typerror" />
+   		<completion string="unref" />
+   		<completion string="where" />  		
+	</set>
+	
+<!--lua C API-->	
+	<set name="com.rosensteiner.Lua.lua-functions" casesensitive="true">
+  		<completion string="Alloc" />
+  		<completion string="CFunction" />
+  		<completion string="Debug" />
+  		<completion string="Hook" />
+  		<completion string="Integer" />
+  		<completion string="Number" />
+  		<completion string="Reader" />
+  		<completion string="State" />
+  		<completion string="Writer" />
+  		<completion string="atpanic" />
+  		<completion string="call" />
+  		<completion string="checkstack" />
+  		<completion string="close" />
+  		<completion string="concat" />
+  		<completion string="cpcall" />
+  		<completion string="createtable" />
+  		<completion string="dump" />
+  		<completion string="equal" />
+  		<completion string="error" />
+  		<completion string="gc" />
+  		<completion string="getallocf" />
+  		<completion string="getfenv" />
+  		<completion string="getfield" />
+  		<completion string="getglobal" />
+  		<completion string="gethook" />
+  		<completion string="gethookcount" />
+  		<completion string="gethookmask" />
+  		<completion string="getinfo" />
+  		<completion string="getlocal" />
+  		<completion string="getmetatable" />
+  		<completion string="getstack" />
+  		<completion string="gettable" />
+  		<completion string="gettop" />
+  		<completion string="getupvalue" />
+  		<completion string="insert" />
+  		<completion string="isboolean" />
+  		<completion string="iscfunction" />
+  		<completion string="isfunction" />
+  		<completion string="islightuserdata" />
+  		<completion string="isnil" />
+  		<completion string="isnone" />
+  		<completion string="isnoneornil" />
+  		<completion string="isnumber" />
+  		<completion string="isstring" />
+  		<completion string="istable" />
+  		<completion string="isthread" />
+  		<completion string="isuserdata" />
+  		<completion string="lessthan" />
+  		<completion string="load" />
+  		<completion string="newstate" />
+  		<completion string="newtable" />
+  		<completion string="newthread" />
+  		<completion string="newuserdata" />
+  		<completion string="next" />
+  		<completion string="objlen" />
+  		<completion string="pcall" />
+  		<completion string="pop" />
+  		<completion string="pushboolean" />
+  		<completion string="pushcclosure" />
+  		<completion string="pushcfunction" />
+  		<completion string="pushfstring" />
+  		<completion string="pushinteger" />
+  		<completion string="pushlightuserdata" />
+  		<completion string="pushliteral" />
+  		<completion string="pushlstring" />
+  		<completion string="pushnil" />
+  		<completion string="pushnumber" />
+  		<completion string="pushstring" />
+  		<completion string="pushthread" />
+  		<completion string="pushvalue" />
+  		<completion string="pushvfstring" />
+  		<completion string="rawequal" />
+  		<completion string="rawget" />
+  		<completion string="rawgeti" />
+  		<completion string="rawset" />
+  		<completion string="rawseti" />
+  		<completion string="register" />
+  		<completion string="remove" />
+  		<completion string="replace" />
+  		<completion string="resume" />
+  		<completion string="setallocf" />
+  		<completion string="setfenv" />
+  		<completion string="setfield" />
+  		<completion string="setglobal" />
+  		<completion string="sethook" />
+  		<completion string="setlocal" />
+  		<completion string="setmetatable" />
+  		<completion string="settable" />
+  		<completion string="settop" />
+  		<completion string="setupvalue" />
+  		<completion string="status" />
+  		<completion string="toboolean" />
+  		<completion string="tocfunction" />
+  		<completion string="tointeger" />
+  		<completion string="tolstring" />
+  		<completion string="tonumber" />
+  		<completion string="topointer" />
+  		<completion string="tostring" />
+  		<completion string="tothread" />
+  		<completion string="touserdata" />
+  		<completion string="type" />
+  		<completion string="typename" />
+  		<completion string="upvalueindex" />
+  		<completion string="xmove" />
+  		<completion string="yield" />
+	</set>
+	
+<!--debug functions-->	
+	<set name="com.rosensteiner.Lua.debug-functions" casesensitive="true">
+  		<completion string="debug" />
+		<completion string="getfenv" />
+		<completion string="gethook" />
+		<completion string="getinfo" />
+		<completion string="getlocal" />
+		<completion string="getmetatable" />
+		<completion string="getregistry" />
+		<completion string="getupvalue" />
+		<completion string="setfenv" />
+		<completion string="sethook" />
+		<completion string="setlocal" />
+		<completion string="setmetatable" />
+		<completion string="setupvalue" />
+		<completion string="traceback" />  		
+	</set>	
+	
+<!--os functions-->	
+	<set name="com.rosensteiner.Lua.os-functions" casesensitive="true">
+  		<completion string="clock" />
+		<completion string="date" />
+		<completion string="difftime" />
+		<completion string="execute" />
+		<completion string="exit" />
+		<completion string="getenv" />
+		<completion string="remove" />
+		<completion string="rename" />
+		<completion string="setlocale" />
+		<completion string="time" />
+		<completion string="tmpname" />  		
+	</set>	
+	
+<!--colon syntax functions-->	
+	<set name="com.rosensteiner.Lua.colon-functions" casesensitive="true">
+  		<completion string="close" />
+		<completion string="flush" />
+		<completion string="lines" />
+		<completion string="read" />
+		<completion string="seek" />
+		<completion string="setvbuf" />
+		<completion string="write" />
+		
+	<!--string functions which make sense here-->
+		<completion string="byte">
+				<behavior>
+					<append-dynamic>
+						<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+						<transform-into>(?1:$1:\( ${1:i}${2:, ${3:j}} \) $0)</transform-into>
+					</append-dynamic>
+					<confirm characters=")" />
+				</behavior>
+			</completion>
+		<completion string="find">
+			<behavior>
+					<append-dynamic>
+						<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+						<transform-into>(?1:$1:\( ${1:pattern}${2:, ${3:init}${4:, ${5:plain}}} \) $0)</transform-into>
+					</append-dynamic>
+					<confirm characters=")" />
+				</behavior>
+			</completion>
+		<completion string="gmatch">
+			<behavior>
+					<append-dynamic>
+						<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+						<transform-into>(?1:$1:\( ${1:pattern} \) $0)</transform-into>
+					</append-dynamic>
+					<confirm characters=")" />
+				</behavior>
+			</completion>
+		<completion string="gsub">
+			<behavior>
+					<append-dynamic>
+						<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+						<transform-into>(?1:$1:\( ${1:pattern}${2:, ${3:replacement}${4:, ${5:n}}} \) $0)</transform-into>
+					</append-dynamic>
+					<confirm characters=")" />
+				</behavior>
+			</completion>
+		<completion string="len" />
+		<completion string="lower" />
+		<completion string="match">
+			<behavior>
+					<append-dynamic>
+						<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+						<transform-into>(?1::\( ${1:pattern}${2:, ${3:init}} \) $0)</transform-into>
+					</append-dynamic>
+					<confirm characters=")" />
+				</behavior>
+			</completion>
+		<completion string="rep">
+			<behavior>
+					<append-dynamic>
+						<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+						<transform-into>(?1:$1:\( ${1:n} \) $0)</transform-into>
+					</append-dynamic>
+					<confirm characters=")" />
+				</behavior>
+			</completion>
+		<completion string="reverse" />
+		<completion string="sub">
+			<behavior>
+					<append-dynamic>
+						<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+						<transform-into>(?1:$1:\( ${1:i}${2:, ${3:j}} \) $0)</transform-into>
+					</append-dynamic>
+					<confirm characters=")" />
+				</behavior>
+			</completion>
+		<completion string="upper" />
+	</set>
+	
+<!--math functions-->	
+	<set name="com.rosensteiner.Lua.math-functions" casesensitive="true">
+  		<completion string="abs" />
+		<completion string="acos" />
+		<completion string="asin" />
+		<completion string="atan" />
+		<completion string="atan2" />
+		<completion string="ceil" />
+		<completion string="cos" />
+		<completion string="cosh" />
+		<completion string="deg" />
+		<completion string="exp" />
+		<completion string="floor" />
+		<completion string="fmod" />
+		<completion string="frexp" />
+		<completion string="huge">	<!--constant no function-->
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s+)|[^\s]</matched-suffix>
+					<transform-into>(?1:$1: )$0</transform-into>
+				</append-dynamic>
+				<partial-confirm characters="." />
+			</behavior>
+		</completion>
+		<completion string="ldexp" />
+		<completion string="log" />
+		<completion string="log10" />
+		<completion string="max" />
+		<completion string="min" />
+		<completion string="modf" />
+		
+		<completion string="pi">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>(\s+)|[^\s]</matched-suffix>
+					<transform-into>(?1:$1: )$0</transform-into>
+				</append-dynamic>
+				<partial-confirm characters="." />
+			</behavior>
+		</completion>
+			
+		<completion string="pow" />
+		<completion string="rad" />
+		<completion string="random" />
+		<completion string="randomseed" />
+		<completion string="sin" />
+		<completion string="sinh" />
+		<completion string="sqrt" />
+		<completion string="tan" />
+		<completion string="tanh" />  		
+	</set>	
+	
+<!--table functions-->	
+	<set name="com.rosensteiner.Lua.table-functions" casesensitive="true">
+  		<completion string="concat" />
+		<completion string="insert" />
+		<completion string="maxn" />
+		<completion string="remove" />
+		<completion string="sort" />  		
+	</set>
+	
+<!--string functions-->	
+	<set name="com.rosensteiner.Lua.string-functions" casesensitive="true">
+  		<completion string="byte">
+  			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:string}${2:, ${3:i}${4:, ${5:j}}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   			</behavior>
+   		</completion>
+		<completion string="char" />
+		<completion string="dump" />
+		<completion string="find">
+			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:string}${2:, ${3:pattern}${4:, ${5:init}${6:, ${7:plain}}}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   			</behavior>
+   		</completion>
+		<completion string="format">
+			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:formatstring}, ${2:...} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   			</behavior>
+   		</completion>
+		<completion string="gmatch">
+			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:string}${2:, ${3:pattern}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   			</behavior>
+   		</completion>
+		<completion string="gsub">
+			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:string}${2:, ${3:pattern}${4:, ${5:replacement}${6:, ${7:n}}}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   			</behavior>
+   		</completion>
+		<completion string="len" />
+		<completion string="lower" />
+		<completion string="match">
+			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1::\( ${1:string}${2:, ${3:pattern}${4:, ${5:init}}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   			</behavior>
+   		</completion>
+		<completion string="rep">
+			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:string}${2:, ${3:n}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   			</behavior>
+   		</completion>
+		<completion string="reverse" />
+		<completion string="sub">
+			<behavior>
+   				<append-dynamic>
+   					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   					<transform-into>(?1:$1:\( ${1:string}${2:, ${3:i}${4:, ${5:j}}} \) $0)</transform-into>
+   				</append-dynamic>
+   				<confirm characters=")" />
+   			</behavior>
+   		</completion>
+		<completion string="upper" />  		
+	</set>
+	
+<!--package functions-->	
+	<set name="com.rosensteiner.Lua.package-functions" casesensitive="true">
+  		<completion string="cpath">
+  			<behavior>
+  				<append-static></append-static>
+  			</behavior>
+  		</completion>
+		<completion string="loaded">
+			<behavior>
+				<append-static></append-static>
+			</behavior>
+		</completion>
+		<completion string="loaders">
+			<behavior>
+				<append-static></append-static>
+			</behavior>
+		</completion>
+		<completion string="loadlib" />
+		<completion string="path">
+			<behavior>
+				<append-static></append-static>
+			</behavior>
+		</completion>
+		<completion string="preload">
+			<behavior>
+				<append-static></append-static>
+			</behavior>
+		</completion>
+		<completion string="seeall" />  		
+	</set>	
+	
+<!--coroutine functions-->	
+	<set name="com.rosensteiner.Lua.coroutine-functions" casesensitive="true">
+  		<completion string="create" />
+		<completion string="resume" />
+		<completion string="running" />
+		<completion string="status" />
+		<completion string="wrap" />
+		<completion string="yield" />  		
+	</set>
+	
+<!--io functions-->	
+	<set name="com.rosensteiner.Lua.io-functions" casesensitive="true">
+  		<completion string="close" />
+		<completion string="flush" />
+		<completion string="input" />
+		<completion string="lines" />
+		<completion string="open" />
+		<completion string="output" />
+		<completion string="popen" />
+		<completion string="read" />
+		<completion string="type" />
+		<completion string="write" />
+		<completion string="stdin"><!--no function, but predefined stream-->
+			<behavior>
+   				<append-static></append-static>
+   			</behavior>
+		</completion>
+		<completion string="stdout"><!--no function, but predefined stream-->
+			<behavior>
+   				<append-static></append-static>
+   			</behavior>
+		</completion>
+		<completion string="stderr"><!--no function, but predefined stream-->
+			<behavior>
+   				<append-static></append-static>
+   			</behavior>
+		</completion>
+		<completion string="tmpfile" />
+	</set>
+	
+<!--lpeg functions-->	
+	<set name="com.rosensteiner.Lua.lpeg-functions" casesensitive="true">
+  		<completion string="print" />
+		<completion string="match">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+					<transform-into>(?1::\( ${1:pattern}${2:, ${3:subject}${4:, ${5:init}}} \) $0)</transform-into>
+				</append-dynamic>
+				<confirm characters=")" />
+			</behavior>
+		</completion>
+		<completion string="type" />
+		<completion string="version" />
+		<completion string="setmaxstack" />
+		<completion string="P" />
+		<completion string="B">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+					<transform-into>(?1::\( ${1:patt}${2:, ${3:n}} \) $0)</transform-into>
+				</append-dynamic>
+				<confirm characters=")" />
+			</behavior>
+		</completion>
+		<completion string="R" />
+		<completion string="S" />
+		<completion string="V" />
+		<completion string="locale" />
+		<completion string="C" />
+		<completion string="Carg" />
+		<completion string="Cb" />
+		<completion string="Cc" />
+		<completion string="Cf">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+					<transform-into>(?1::\( ${1:pattern}${2:, ${3:function}} \) $0)</transform-into>
+				</append-dynamic>
+				<confirm characters=")" />
+			</behavior>
+		</completion>
+		<completion string="Cg">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+					<transform-into>(?1::\( ${1:pattern}${2:, ${3:name}} \) $0)</transform-into>
+				</append-dynamic>
+				<confirm characters=")" />
+			</behavior>
+		</completion>
+		<completion string="Cp" />
+		<completion string="Cs" />
+		<completion string="Ct" />
+		<completion string="Cmt">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+					<transform-into>(?1::\( ${1:pattern}${2:, ${3:function}} \) $0)</transform-into>
+				</append-dynamic>
+				<confirm characters=")" />
+			</behavior>
+		</completion> 		
+	</set>
+	
+<!--re functions-->	
+	<set name="com.rosensteiner.Lua.re-functions" casesensitive="true">
+  		<completion string="updatelocale" />
+		<completion string="match">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+					<transform-into>(?1::\( ${1:subject}${2:, ${3:pattern}} \) $0)</transform-into>
+				</append-dynamic>
+				<confirm characters=")" />
+			</behavior>
+		</completion>
+		<completion string="find">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+					<transform-into>(?1::\( ${1:subject}${2:, ${3:pattern}${4:, ${5:init}}} \) $0)</transform-into>
+				</append-dynamic>
+				<confirm characters=")" />
+			</behavior>
+		</completion>
+		<completion string="compile">
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+					<transform-into>(?1::\( ${1:string}${2:, ${3:defs}} \) $0)</transform-into>
+				</append-dynamic>
+				<confirm characters=")" />
+			</behavior>
+		</completion>	
+	</set>
+		
+<!--character classes (strings)-->	
+	<set name="com.rosensteiner.Lua.character-classes" casesensitive="true">
+  
+  		<behavior>
+  			<append-dynamic>
+  				<matched-suffix>([^"']*("|'))|\s*[^"'\s]?</matched-suffix>
+  				<transform-into>(?1:$1:$1")</transform-into>
+  			</append-dynamic>
+  			<confirm characters=" " />
+  		</behavior>
+  
+  		<completion string="%a" />
+  		<completion string="%c" />
+  		<completion string="%d" />
+  		<completion string="%l" />
+  		<completion string="%p" />
+  		<completion string="%s" />
+  		<completion string="%u" />
+  		<completion string="%w" />
+  		<completion string="%x" />
+  		<completion string="%z" />
+  		<completion string="%b" /> <!--for balanced strings, but it´s good to have it here-->
+  		<completion string="%A" />
+  		<completion string="%C" />
+  		<completion string="%D" />
+  		<completion string="%L" />
+  		<completion string="%P" />
+  		<completion string="%S" />
+  		<completion string="%U" />
+  		<completion string="%W" />
+  		<completion string="%X" />
+  		<completion string="%Z" />
+  		<completion string="%nl" />	<!--only valid in re-module Lua long strings-->	
+  		
+	</set>
+	
+<!--string formatting commands for e.g., string.format(%c, ...)-->	
+	<set name="com.rosensteiner.Lua.string-format" casesensitive="true">
+  
+  		<behavior>
+  			<append-dynamic>
+  				<matched-suffix>([^"']*("|'))|\s*[^"'\s]?</matched-suffix>
+  				<transform-into>(?1:$1:$1")</transform-into>
+  			</append-dynamic>
+  			<confirm characters=" " />
+  		</behavior>
+  
+  		<completion string="c" />
+  		<completion string="d" />
+  		<completion string="e" />
+  		<completion string="f" />
+  		<completion string="g" />
+  		<completion string="i" />
+  		<completion string="o" />
+  		<completion string="u" />
+  		<completion string="x" />
+  		<completion string="q" />
+  		<completion string="s" />
+  		<completion string="E" />
+  		<completion string="G" />
+  		<completion string="X" />
+  		
+	</set>
+		
+<!--metamethods-->	
+	<set name="com.rosensteiner.Lua.metamethods" casesensitive="true">
+  
+  		<behavior>
+  			<append-dynamic>
+  				<matched-suffix>(\s+)|[^\s]</matched-suffix>
+  				<transform-into>(?1:$1: )$0</transform-into>
+  			</append-dynamic>
+  			<confirm characters=" " />
+  		</behavior>
+  
+  		<completion string="add" />
+  		<completion string="sub" />
+  		<completion string="mul" />
+  		<completion string="div" />
+  		<completion string="mod" />
+  		<completion string="pow" />
+  		<completion string="unm" />
+  		<completion string="concat" />
+  		<completion string="len" />
+  		<completion string="eq" />
+  		<completion string="lt" />
+  		<completion string="le" />
+  		<completion string="index" />
+  		<completion string="newindex" />
+  		<completion string="call" />
+  		<completion string="tostring" />
+  		<completion string="metatable" />
+  		<completion string="mode" /><!--for weak tables-->
+  		
+	</set>
+	
+<!--io.read("...")-->	
+	<set name="com.rosensteiner.Lua.ioread.methods" casesensitive="true">
+  
+  		<behavior>
+  			<append-dynamic>
+  				<matched-suffix>((\s*)("|'))|\s*[^"'\s]?</matched-suffix>
+  				<transform-into>(?1:$1:"$1)</transform-into>
+  			</append-dynamic>
+  			<confirm characters=" " />
+  		</behavior>
+  
+  		<completion string="all" />
+  		<completion string="line" />
+  		<completion string="number" />
+  		<completion string="a" />
+  		<completion string="l" />
+  		<completion string="n" />	
+  		
+	</set>
+	
+<!--io.open( ..., "...")-->	
+	<set name="com.rosensteiner.Lua.ioopen.methods" casesensitive="true">
+  
+  		<behavior>
+  			<append-dynamic>
+  				<matched-suffix>((\s*)("|'))|\s*[^"'\s]?</matched-suffix>
+  				<transform-into>(?1:$1:"$1)</transform-into>
+  			</append-dynamic>
+  			<confirm characters=" " />
+  		</behavior>
+  
+  		<completion string="r" />
+  		<completion string="w" />
+  		<completion string="a" />
+  		<completion string="rb" />
+  		<completion string="wb" />
+  		<completion string="ab" />
+  		<completion string="r+" />
+  		<completion string="w+" />
+  		<completion string="a+" />
+  		
+	</set>
+	
+<!--io.popen( ..., "...")-->	
+	<set name="com.rosensteiner.Lua.iopopen.methods" casesensitive="true">
+  
+  		<behavior>
+  			<append-dynamic>
+  				<matched-suffix>((\s*)("|'))|\s*[^"'\s]?</matched-suffix>
+  				<transform-into>(?1:$1:"$1)</transform-into>
+  			</append-dynamic>
+  			<confirm characters=" " />
+  		</behavior>
+  
+  		<completion string="r" />
+  		<completion string="w" />	
+  		
+	</set>
+
+<!--file:seek("...")-->	
+	<set name="com.rosensteiner.Lua.fileseek.methods" casesensitive="true">
+	
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)("|'))|\s*[^"'\s]?</matched-suffix>
+					<transform-into>(?1:$1:"$1)</transform-into>
+				</append-dynamic>
+				<confirm characters=" " />
+			</behavior>
+	
+			<completion string="set" />
+			<completion string="cur" />
+			<completion string="end" />	
+			
+		</set>
+		
+<!--file:setvbuf ("...")-->	
+	<set name="com.rosensteiner.Lua.filesetvbuf.methods" casesensitive="true">
+	
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)("|'))|\s*[^"'\s]?</matched-suffix>
+					<transform-into>(?1:$1:"$1)</transform-into>
+				</append-dynamic>
+				<confirm characters=" " />
+			</behavior>
+	
+			<completion string="no" />
+			<completion string="full" />
+			<completion string="line" />	
+			
+		</set>
+
+<!--collectgarbage ("...")-->	
+	<set name="com.rosensteiner.Lua.collectgarbage.options" casesensitive="true">
+	
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)("|'))|\s*[^"'\s]?</matched-suffix>
+					<transform-into>(?1:$1:"$1)</transform-into>
+				</append-dynamic>
+				<confirm characters=" " />
+			</behavior>
+	
+			<completion string="stop" />
+			<completion string="restart" />
+			<completion string="collect" />
+			<completion string="count" />
+			<completion string="step" />
+			<completion string="setpause" />
+			<completion string="setstepmul" />	
+			
+		</set>
+		
+<!--__mode = "..."-->	
+	<set name="com.rosensteiner.Lua.metamethod.mode" casesensitive="true">
+	
+			<behavior>
+				<append-dynamic>
+					<matched-suffix>((\s*)("|'))|\s*[^"'\s]?</matched-suffix>
+					<transform-into>(?1:$1:"$1)</transform-into>
+				</append-dynamic>
+				<confirm characters=" " />
+			</behavior>
+	
+			<completion string="k" />
+			<completion string="v" />
+			<completion string="kv" />	
+			
+		</set>
+    
+</codesense> 

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+@description Defines the Lua Text Actions
+@author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
+@copyright 	 The MIT License
+
+Copyright (c) 2010 Bernhard Rosensteiner
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<action-recipes>
+
+	<snippet id="actions.snippets.lua.WrapBraces" category="actions.snippets.lua">
+	    <title>auto curly braces</title>
+	<text>{${EDITOR_SELECTION:${1:...}}}$0</text>
+		<key-equivalent>shift {</key-equivalent>
+	    <syntax-context>source.Lua, source.Lua :not(string)</syntax-context>
+	</snippet>
+	
+	<snippet id="actions.snippets.lua.WrapBracket" category="actions.snippets.lua">
+		<title>auto square brackets</title>
+		<key-equivalent>shift [</key-equivalent>
+		<text>[${EDITOR_SELECTION:${1:...}}]$0</text>
+		<syntax-context>source.Lua, source.Lua :not(string)</syntax-context>
+	</snippet>
+	
+	<snippet id="actions.snippets.lua.WrapParenthesis" category="actions.snippets.lua">
+		<title>auto parenthesis</title>
+		<key-equivalent>cmd (</key-equivalent>
+		<text>\(${EDITOR_SELECTION:${1:...}}\)$0</text>
+		<syntax-context>source.Lua, source.Lua :not(string)</syntax-context>
+	</snippet>
+	
+	<snippet id="actions.snippets.lua.WrapMultiline" category="actions.snippets.lua">
+		<title>auto multiline quotes</title>
+		<key-equivalent>command shift [</key-equivalent>
+		<text>[[
+${EDITOR_SELECTION:${1:multiline string}}
+]]$0</text>
+		<syntax-context>source.Lua, source.Lua :not(escape)</syntax-context>
+	</snippet>
+	
+	<snippet id="actions.snippets.lua.WrapDoubleQuote" category="actions.snippets.lua">
+		<title>auto double quotes</title>
+		<key-equivalent>option "</key-equivalent>
+		<text>"${EDITOR_SELECTION:${1:string}}"$0</text>
+		<syntax-context>source.Lua, source.Lua :not(escape)</syntax-context>
+	</snippet>
+	
+	<snippet id="actions.snippets.lua.WrapSingleQuote" category="actions.snippets.lua">
+		<title>auto single quotes</title>
+		<key-equivalent>shift '</key-equivalent>
+		<text>'${EDITOR_SELECTION:${1:string}}'$0</text>
+		<syntax-context>source.Lua, source.Lua :not(escape)</syntax-context>
+	</snippet>
+	
+	<snippet id="actions.snippets.lua.WrapInComment" category="actions.snippets.lua">
+		<title>wrap in multiline comment</title>
+		<key-equivalent>cmd option c</key-equivalent>
+		<text>--[[
+${EDITOR_SELECTION:${1:comment goes here}}
+--]]$0</text>
+		<syntax-context>source.Lua, source.Lua :not(escape)</syntax-context>
+	</snippet>
+	
+</action-recipes>

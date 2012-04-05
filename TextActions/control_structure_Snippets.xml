@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+@description Defines the Lua Text Actions snippets
+@author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
+@copyright 	 The MIT License
+
+Copyright (c) 2010 Bernhard Rosensteiner
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<action-recipes>
+
+<!--new numeric for loop-->
+    <snippet id="actions.snippets.lua.function.new-for-loop" category="actions.snippets.lua/lua.code.snippets">
+        <title>new numeric for loop</title>
+        <text>for ${1:variable} = ${2:from exp1}, ${3:to exp2}, ${4:increment} do
+        
+	${5:...body...}
+        
+end
+$0</text>
+        <syntax-context>source.Lua, source.Lua *</syntax-context>
+        <text-trigger>nfor</text-trigger>
+    </snippet>
+    
+<!--new generic for loop--><snippet id="actions.snippets.lua.function.new-numeric-for-loop" category="actions.snippets.lua/lua.code.snippets">
+        <title>new generic for loop</title>
+        <text>for ${1:var-list} in ${2:exp-list} do
+        
+	${5:...body...}
+        
+end
+$0</text>
+        <syntax-context>source.Lua, source.Lua *</syntax-context>
+        <text-trigger>gfor</text-trigger>
+    </snippet>
+    
+<!--new while loop-->
+        <snippet id="actions.snippets.lua.function.new-generic-for-loop" category="actions.snippets.lua/lua.code.snippets">
+            <title>new while loop</title>
+            <text>while ${1:condition}  do
+            
+	${2:...body...}
+            
+end
+$0</text>
+            <syntax-context>source.Lua, source.Lua *</syntax-context>
+            <text-trigger>while</text-trigger>
+        </snippet>
+        
+<!--new repeat loop-->
+                <snippet id="actions.snippets.lua.function.new-while-loop" category="actions.snippets.lua/lua.code.snippets">
+                    <title>new repeat loop</title>
+                    <text>repeat
+                    
+	${1:...body...}
+                    
+until ${2:condition}
+$0</text>
+                    <syntax-context>source.Lua, source.Lua *</syntax-context>
+                    <text-trigger>repeat</text-trigger>
+                </snippet>
+
+</action-recipes>

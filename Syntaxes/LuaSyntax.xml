@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+@description Defines the Lua syntax
+@author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
+@copyright 	 The MIT License
+
+Copyright (c) 2010 Bernhard Rosensteiner
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<syntax name="source.Lua">
+
+    <zones>
+    
+    	<zone name="lua.shebang">
+    	    <expression>^\s*#!.+?lua</expression>
+    	</zone>
+    	
+    	<include collection="Variables" />
+    	<include collection="Comments" />
+    	<include collection="Operators" />
+    	<include collection="LuaLanguage" />
+    	<include collection="Numeric" />
+    	<include collection="FunctionDef"/>
+    	<include collection="Function"/>
+    	<include collection="ControlKeywords" />
+    	<include collection="Strings"/>
+    	<include collection="FlowControl" />
+        <include collection="Tables" />
+        
+		<zone name="lua.balanced.parenthesis">
+			<starts-with>
+				<expression>\(</expression>
+				<capture number="0" name="lua.punctuation.open-parenthesis"/>
+			</starts-with>
+			<ends-with>
+				<expression>\)</expression>
+ 				<capture number="0" name="lua.punctuation.close-parenthesis"/>
+			</ends-with>
+			<subzones>
+				<include syntax="source.Lua" />
+			</subzones>
+		</zone>
+                
+	</zones>
+    
+    
+	<library>
+	
+		<collection name="Comments">
+		
+			<zone name="lua.comment.block">
+			    <starts-with>
+			        <expression>--\[(=*)\[</expression>
+			        <capture number="0" name="lua.punctuation.definition.comment"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>(--)?\]\1\]</expression>
+			        <capture number="0" name="lua.punctuation.definition.comment"/>
+			    </ends-with>
+			</zone>
+			
+			<zone name="lua.comment.line.double-dash">
+			    <expression>(--)(?!\[\[).*$\n?</expression>
+			    <capture number="1" name="lua.punctuation.definition.comment"/>
+			</zone>
+		
+		</collection>
+		
+		<collection name="Variables">
+		
+			<zone name="lua.global.variable">	<!--as long as Lua uses the _[A-Z] pattern for global variables we don´t have to worry about new ones in future Lua versions, otherwise we must begin to be more specific-->
+			    <expression>\b_[A-Z]+\b</expression>
+			</zone>
+			
+			<zone name="lua.metamethod.mode">
+				<expression>\b__mode\b</expression>
+			</zone>
+			
+			<zone name="lua.metamethod"><!--should be sufficient for general catching off Lua- and user defined metamethods-->
+				<expression>\b__[a-zA-Z0-9_]+\b</expression>
+			</zone>
+		
+			<zone name="lua.variable.self">
+			    <expression>(?&lt;![^.]\.|:)\b(self)\b</expression>
+			</zone>
+			
+			<zone name="lua.variable.dummy"><!--not valid syntax, but good behaviour-->
+			    <expression>\b_\b</expression>
+			</zone>
+			
+		</collection>
+		
+		<collection name="FlowControl">
+			
+			<zone name="lua.container.control">
+			         <starts-with>
+			             <expression>\bif\b</expression>
+			             <capture number="0" name="lua.keyword.control.flow"/>
+			         </starts-with>
+			         <ends-with>
+			             <expression>\bend\b</expression>
+			             <capture number="0" name="lua.keyword.control.end"/>
+			         </ends-with>
+			         <subzones name="lua.if.body">
+			         	<include collection="Loopbreak" />
+			             <include syntax="source.Lua"/>
+			         </subzones>
+			     </zone>
+			
+			     <zone name="lua.container.control.for">
+			         <starts-with>
+			             <expression>\bfor\b</expression>
+			             <capture number="0" name="lua.keyword.control.flow.for"/>
+			         </starts-with>
+			         <ends-with>
+			             <expression>\bend\b</expression>
+			             <capture number="0" name="lua.keyword.control.end"/>
+			         </ends-with>
+			         <subzones name="lua.loop.body">
+			         	<include collection="Loopbreak" />
+			             <include syntax="source.Lua"/>
+			             <include collection="GeneralWord" />
+			         </subzones>
+			     </zone>
+			     
+			     <zone name="lua.container.control.while">
+			         <starts-with>
+			             <expression>\bwhile\b</expression>
+			             <capture number="0" name="lua.keyword.control.flow.while"/>
+			         </starts-with>
+			         <ends-with>
+			             <expression>\bend\b</expression>
+			             <capture number="0" name="lua.keyword.control.end"/>
+			         </ends-with>
+			         <subzones name="lua.loop.body">
+			         	<include collection="Loopbreak" />
+			             <include syntax="source.Lua"/>
+			         </subzones>
+			     </zone>
+			     
+			     <zone name="lua.container.control.repeat">
+			         <starts-with>
+			             <expression>\brepeat\b</expression>
+			             <capture number="0" name="lua.keyword.control.flow.repeat"/>
+			         </starts-with>
+			         <ends-with>
+			             <expression>\buntil\b</expression>
+			             <capture number="0" name="lua.keyword.control.end"/>
+			         </ends-with>
+			         <subzones name="lua.loop.body">
+			         	<include collection="Loopbreak" />
+			             <include syntax="source.Lua"/>
+			         </subzones>
+			     </zone>
+			
+		</collection>
+		
+		<collection name="ControlKeywords">
+		
+		    <zone name="lua.keyword.control">
+		        <expression>\b(return|then|local|elseif|else|do|end)\b</expression>
+		    </zone>
+		    
+		    <zone name="lua.keyword.control.in">
+		        <expression>\bin\b</expression>
+		    </zone>
+		    
+		</collection>
+		
+		<collection name="Tables">
+		
+			<zone name="lua.table.constructor">
+			    <starts-with>
+			        <expression>\{</expression>
+			        <capture number="0" name="lua.punctuation.open-brace"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>\}</expression>
+			        <capture number="0" name="lua.punctuation.close-brace"/>
+			    </ends-with>
+			    <subzones>
+			    	<zone name="lua.table.separator">
+			        	<expression>,|;</expression>
+			    	</zone>
+			    	<include syntax="source.Lua" />
+			    </subzones>
+			</zone>
+			
+			<zone name="lua.table.index">
+			    <starts-with>
+			        <expression>\[</expression>
+			        <capture number="0" name="lua.punctuation.open-bracket"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>\]</expression>
+			        <capture number="0" name="lua.punctuation.close-bracket"/>
+			    </ends-with>
+			    <subzones>
+			    	<include syntax="source.Lua" />
+			    </subzones>
+			</zone>
+		
+		</collection>
+		
+		
+		<collection name="Strings">
+		
+			<zone name="lua.string.quoted.single">
+			    <starts-with>
+			        <expression>'</expression>
+			        <capture number="0" name="lua.punctuation.singlequote.string.quoted.begin"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>'</expression>
+			        <capture number="0" name="lua.punctuation.singlequote.string.quoted.end"/>
+			    </ends-with>
+			    <subzones>
+			    	<include collection="StringsInString"/>
+			    	<include collection="Backreference_and_MagicEscape"/>
+			    	<include collection="EscapeChar"/>
+			        <include collection="Additional"/>
+			    </subzones>
+			</zone>
+			
+			<zone name="lua.string.quoted.double.std">
+			    <starts-with>
+			        <expression>"</expression>
+			        <capture number="0" name="lua.punctuation.doublequote.string.quoted.begin"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>"</expression>
+			        <capture number="0" name="lua.punctuation.doublequote.string.quoted.end"/>
+			    </ends-with>
+			    <subzones>
+			    	<include collection="StringsInString"/>
+			    	<include collection="Backreference_and_MagicEscape"/>
+			    	<include collection="EscapeChar"/>
+			        <include collection="Additional"/>
+			    </subzones>
+			</zone>
+			
+			<zone name="lua.string.quoted.multiline">
+			    <starts-with>
+			        <expression>(?&lt;!--)\[(=*)\[</expression>
+			        <capture number="0" name="lua.punctuation.double-bracket.string.quoted.begin"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>\]\1\]</expression>
+			        <capture number="0" name="lua.punctuation.double-bracket.string.quoted.end"/>
+			    </ends-with>
+			    <subzones>
+			    	<include collection="Backreference_and_MagicEscape"/>
+			        <include collection="Additional"/>
+			    </subzones>
+			</zone>
+		
+		</collection>
+		
+		<collection name="StringsInString">
+		
+			<zone name="lua.string.quoted.single">
+			    <starts-with>
+			        <expression>'</expression>
+			        <capture number="0" name="lua.punctuation.singlequote.string.quoted.begin"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>'</expression>
+			        <capture number="0" name="lua.punctuation.singlequote.string.quoted.end"/>
+			    </ends-with>
+			    <subzones>
+			    	<include collection="StringsInString"/>
+			    	<include collection="Backreference_and_MagicEscape"/>
+			    	<include collection="EscapeChar"/>
+			    </subzones>
+			</zone>
+			
+			<zone name="lua.string.quoted.double.std">
+			    <starts-with>
+			        <expression>"</expression>
+			        <capture number="0" name="lua.punctuation.doublequote.string.quoted.begin"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>"</expression>
+			        <capture number="0" name="lua.punctuation.doublequote.string.quoted.end"/>
+			    </ends-with>
+			    <subzones>
+			    	<include collection="StringsInString"/>
+			    	<include collection="Backreference_and_MagicEscape"/>
+			    	<include collection="EscapeChar"/>
+			    </subzones>
+			</zone>
+			
+			<zone name="lua.string.quoted.multiline">
+			    <starts-with>
+			        <expression>(?&lt;!--)\[(=*)\[</expression>
+			        <capture number="0" name="lua.punctuation.double-bracket.string.quoted.begin"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>\]\1\]</expression>
+			        <capture number="0" name="lua.punctuation.double-bracket.string.quoted.end"/>
+			    </ends-with>
+			    <subzones>
+			    	<include collection="StringsInString"/>
+			    </subzones>
+			</zone>
+		
+		</collection>
+	
+		<collection name="FunctionDef">
+			<zone name="lua.container.function.definition">
+			    <starts-with>
+			        <expression>((\blocal\b\s+)?(\bfunction\b))\s*([a-zA-Z0-9\.:_]+)?</expression>
+			        <capture number="1" name="lua.local-function"/><!--only for itemizer catching-->
+			        <capture number="2" name="lua.keyword.control.local"/>
+			        <capture number="3" name="lua.keyword.control.function"/>
+			        <capture number="4" name="lua.function.name"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>\bend\b</expression>
+			        <capture number="0" name="lua.keyword.control.end"/>
+			    </ends-with>
+			    <subzones>
+			        <include syntax="source.Lua"/>
+			    </subzones>
+			</zone>
+		</collection>
+	
+	
+		<collection name="Function">
+		
+			<zone name="lua.container.library-function.call.magical"><!--special, because of magical character matching in patterns-->
+                <starts-with>
+                    <expression>(string)(\.)(find|gsub|match|gmatch)\s*(\()</expression>
+                    <capture number="1" name="lua.library-call"/>
+                    <capture number="2" name="lua.keyword.operator.call.point"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.magical">
+                	<include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function.call.format"><!--special, because of formatting commands, context is for LuaTeX injection in ConTeXt syntax-->
+                <starts-with>
+                    <expression>(string)(\.)(format)\s*(\()</expression>
+                    <capture number="1" name="lua.library-call"/>
+                    <capture number="2" name="lua.keyword.operator.call.point"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.format">
+                	<include collection="Functionargument-format" />
+                	<include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function.call.io-read">
+                <starts-with>
+                    <expression>(?&lt;=\.|:)(read)\s*(\()</expression>
+                    <capture number="1" name="lua.library-call"/>
+                    <capture number="2" name="lua.keyword.operator.call.point"/>
+                    <capture number="3" name="lua.keyword.operator.call.colon"/>
+                    <capture number="4" name="lua.function-call"/>
+                    <capture number="5" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.io-read">
+                  	<include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function.call.io-open">
+                <starts-with>
+                    <expression>(io)(?:(\.)|(:))(open)\s*(\()</expression>
+                    <capture number="1" name="lua.library-call"/>
+                    <capture number="2" name="lua.keyword.operator.call.point"/>
+                    <capture number="3" name="lua.keyword.operator.call.colon"/>
+                    <capture number="4" name="lua.function-call"/>
+                    <capture number="5" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.io-open">
+                  	<include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function.call.io-popen">
+                <starts-with>
+                    <expression>(io)(?:(\.)|(:))(popen)\s*(\()</expression>
+                    <capture number="1" name="lua.library-call"/>
+                    <capture number="2" name="lua.keyword.operator.call.point"/>
+                    <capture number="3" name="lua.keyword.operator.call.colon"/>
+                    <capture number="4" name="lua.function-call"/>
+                    <capture number="5" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.io-popen">
+                  	<include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function.call.file-seek">
+                <starts-with>
+                    <expression>(?&lt;=:)(seek)\s*(\()</expression>
+                    <capture number="1" name="lua.function-call"/>
+                    <capture number="2" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.file-seek">
+                  	<include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function.call.setvbuf">
+            	<starts-with>
+                    <expression>(?&lt;=:)(setvbuf)\s*(\()</expression>
+                    <capture number="1" name="lua.function-call"/>
+                    <capture number="2" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.file-setvbuf">
+                  	<include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function.call.collectgarbage">                <starts-with>
+                    <expression>(collectgarbage)\s*(\()</expression>
+                    <capture number="1" name="lua.function-call"/>
+                    <capture number="2" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.collectgarbage">
+                  	<include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+                	    	    	    	
+            <zone name="lua.container.lua-function.call">
+                <starts-with>
+                    <expression>(?&lt;=:|\.)([a-zA-Z0-9_]+)\s*(\()</expression>
+                    <capture number="1" name="lua.function-call"/>
+                    <capture number="2" name="lua.punctuation.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.punctuation.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.std">
+                    <include syntax="source.Lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.library-call">
+                <expression>[a-zA-Z0-9_]+(?=\.|:)</expression>
+            </zone>
+            
+            <zone name="lua.function-call">
+                <expression>(?&lt;=\.|:)[a-zA-Z0-9_]+</expression>
+            </zone>
+            
+            <zone name="lua.function-call">
+                <expression>[a-zA-Z0-9_]+\s*(?=\()</expression>
+            </zone>
+                	    	    	    	
+		</collection>
+        
+        <collection name="Operators">
+               
+           	<zone name="lua.keyword.operator.relational">
+        	    <expression>(=|~)=|&lt;=?|>=?</expression>
+        	</zone>
+        	
+        	<zone name="lua.keyword.operator.assignment">
+        	    <expression>=</expression>
+        	</zone>
+        	
+        	<zone name="lua.keyword.operator.logical">
+        	    <expression>\b(and|or|not)\b</expression>
+        	</zone>
+        	        	
+        	<zone name="lua.keyword.operator.arithmetic">
+        	    <expression>\+|-(?!-)|\*|\/|\^|%</expression>
+        	</zone>
+        	
+        	<zone name="lua.keyword.operator.lenght">
+        	    <expression>#</expression>
+        	</zone>
+        	
+        	<zone name="lua.keyword.operator.concatenation">
+        	    <expression>(?&lt;!\.)\.{2}(?!\.)</expression>
+        	</zone>
+        	
+        	<zone name="lua.keyword.operator.call.colon">
+        	    <expression>(?&lt;=[a-zA-Z0-9_]):(?=[a-zA-Z0-9_])</expression>
+        	</zone>
+        	
+        	<zone name="lua.keyword.operator.call.point">
+        	    <expression>(?&lt;=[a-zA-Z0-9_])\.(?=[a-zA-Z0-9_])</expression>
+        	</zone>
+        	
+        </collection>
+        
+        <collection name="Loopbreak">
+            <zone name="lua.keyword.control">	<!--break only makes sense in a if|while|for loop-->
+                <expression>\bbreak\b</expression>
+            </zone>
+        </collection>
+        
+        <collection name="LuaLanguage">
+        
+        	<zone name="lua.constant.language.require">
+        	    <expression>\b(require)\b</expression>
+        	</zone>
+        
+        	<zone name="lua.constant.language.math-constants">
+        	    <expression>\b(math)(\.)(pi|huge)\b</expression>
+        	    <capture number="1" name="lua.library-call"/>
+        	    <capture number="2" name="lua.keyword.operator.call.point"/>
+        	</zone>
+        
+            <zone name="lua.constant.language.vararg">
+                <expression>(?&lt;![.])(\.{3})(?!\.)</expression>
+            </zone>
+            
+            <zone name="lua.constant.language.boolean-values">
+                <expression>\b(false|nil|true)\b</expression>
+                <capture number="1" name="lua.constant.language.boolean-values"/>
+            </zone>
+            
+            <zone name="lua.constant.language.predefined-streams">
+            	<expression>\b(io)(\.)(std(in|out|err)\b)</expression>
+            	<capture number="1" name="lua.library-call"/>
+            	<capture number="2" name="lua.keyword.operator.call.point"/>
+            </zone>
+            
+            <zone name="lua.language.separator.comma"> <!--for better color highlighting we capture all commas, so we can make useful definitions in Lua.css-->
+                <expression>,</expression>
+            </zone>
+            
+        </collection>
+        
+        <collection name="Numeric">
+        	        <zone name="lua.constant.numeric">
+        	            <expression>(?&lt;![\d.])\s0x[a-fA-F\d]+|\b(\d+(\.\d+)?([eE]-?\d+)?|\.\d+([eE]-?\d+)?)\b</expression>
+        	        </zone>
+        </collection>
+        
+        <collection name="GeneralWord">
+        	<zone name="lua.language.general-word"> <!--for better color highlighting we capture all words, so we can make useful definitions in Lua.css-->
+        	    <expression>\b[a-zA-Z0-9_]+\b</expression>
+        	</zone>
+        </collection>
+        
+        <collection name="EscapeChar">
+        	<zone name="lua.escape.character">
+        	    <expression>\\[abfnrtv\W'"\!$%&amp;]|\\\d{1,3}</expression>
+        	</zone>
+        </collection>
+        
+        <collection name="Backreference_and_MagicEscape">
+        	<zone name="lua.escape.magic-character">
+        		<expression>%(\(|\)|\.|%|\+|-|\*|\?|\[|\]|\^|\$)</expression>
+        	</zone>
+        	<zone name="lua.keyword.additional.magic-character.backreference">
+        		<expression>%\d+</expression>
+        	</zone>
+        </collection>
+        
+        <collection name="Additional"><!--some keywords which are only valid in designated functions, so they syntax highlighting will be made in Lua.css, and in stings: see string zones-->
+        
+        	<zone name="lua.keyword.additional.PEG">
+        	    <expression>#|&amp;|!|/|&lt;-|->|=>|\{:[a-zA-Z0-9_]+:|\{(:|\~)?|(:|\~)?\}|\=[a-zA-Z0-9_]+</expression>
+        	</zone> 
+        	        
+        	<zone name="lua.keyword.additional.io-read">
+        		<expression>(?&lt;="|')(\*all|\*line|\*number|\*a|\*l|\*n)(?="|')</expression>
+        	</zone>
+        	<zone name="lua.keyword.additional.io-popen">
+        		<expression>(?&lt;="|')(r|w)(?="|')</expression>
+        	</zone>
+        	
+        	<zone name="lua.keyword.additional.io-open">
+        		<expression>(?&lt;="|')(r|w|a)(\+|b)?(?="|')</expression>
+        	</zone>
+        	<zone name="lua.keyword.additional.file-setbuf">
+        		<expression>(?&lt;="|')(no|full|line)(?="|')</expression>
+        	</zone>
+        	<zone name="lua.keyword.additional.file-seek">
+        		<expression>(?&lt;="|')(set|cur|end)(?="|')</expression>
+        	</zone>
+        	<zone name="lua.keyword.additional.collectgarbage">
+        		<expression>(?&lt;="|')(stop|restart|collect|count|step|setpause|setstepmul)(?="|')</expression>
+        	</zone>
+        	<zone name="lua.keyword.additional.metamethod.mode">
+        		<expression>(?&lt;="|')(k|v|kv|vk)(?="|')</expression>
+        	</zone>
+			<zone name="lua.keyword.character-class">
+				<expression>%([acdlpsuwxzbACDLPSUWXZ]|nl)</expression>
+			</zone>                    		    
+			<zone name="lua.keyword.additional.magic-character">
+				<expression>\(|\)|\.|%|\+|-|\*|\?|\[|\]|\^|\$</expression>
+			</zone>
+
+        </collection>
+        
+        <collection name="Functionargument-format">
+           	<zone name="lua.string.quoted.double.format">
+           		<starts-with>
+           		    <expression>(?&lt;=\()\s*(?:(")|('))</expression>
+           		    <capture number="1" name="lua.punctuation.doublequote.string.quoted.begin.format"/>
+           		    <capture number="2" name="lua.punctuation.singlequote.string.quoted.begin.format"/>
+           		</starts-with>
+           		<ends-with>
+           		    <expression>(?:(")|('))</expression>
+           		    <capture number="1" name="lua.punctuation.doublequote.string.quoted.end.format"/>
+           		    <capture number="2" name="lua.punctuation.singlequote.string.quoted.end.format"/>
+				</ends-with>
+           		<subzones>
+          			<zone name="lua.keyword.character-class.string-format">
+           				<expression>%(-|\+|#|0|[[:space:]])?(\d+)?(\.\d+)?[cdEefgGiouxXqs]</expression>
+           				<capture number="1" name="lua.keyword.additional.string-format-flags"/>
+           				<capture number="2" name="lua.keyword.additional.string-format-width"/>
+           				<capture number="3" name="lua.keyword.additional.string-format-precision"/>
+          			</zone>
+          			<include collection="Additional"/>
+           		</subzones> 
+           	</zone>
+        </collection>            
+                    
+	</library>
+    
+</syntax>
