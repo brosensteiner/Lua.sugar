@@ -27,7 +27,7 @@ THE SOFTWARE.
 <itemizer>
 	
 	<recipe name="lua.container.function.named">
-		<start-selector>lua.function.definition-named:has-child(name:capture(name)):capture(itemizer-firstused) + * + open-parentheses:capture(open-parameters) ~ close-parentheses:capture(close-parameters)</start-selector>
+		<start-selector>lua.function.definition-named:has-child(name:capture(name)):capture(itemizer-firstused)</start-selector>
 		<end-selector>Lua lua.keyword.control.end</end-selector>
 		<subrecipes>
 			<include recipe="lua.container.function.named" />
