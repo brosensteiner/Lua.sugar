@@ -26,43 +26,29 @@ THE SOFTWARE.
 -->
 <itemizer>
 	
-<!--comments-->
+	<!--function-->
+	<recipe name="lua.container.function.named">
+		<start-selector>lua.function.definition:has-child(name:capture(name)):capture(itemizer-firstused) + * + open-parentheses:capture(open-parameters) ~ close-parentheses:capture(close-parameters)</start-selector>
+		<end-selector>lua.keyword.control.end</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!--if-->
+	<recipe name="lua.container.control">
+		<class>ESJSControlBlockItem</class>
+		<start-selector>lua.keyword.control:capture(itemizer-firstused) + *:capture(open-parameters) ~ keyword.control.then:capture(close-parameters)</start-selector>
+		<end-selector>lua.keyword.control.end</end-selector>
+		<subrecipes>
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	
+	<!--comments-->
 	<recipe name="lua.comment">
 		<class>ESCommentItem</class>
 		<selector>comment</selector>
-	</recipe>
-	
-<!--flow control-->
-	<recipe name="lua.container.control">
-		<class>ESBaseItem</class>
-		<start-selector>lua.container.control > lua.keyword.control.flow:capture(name)</start-selector>
-		<end-selector>lua.container.control > lua.keyword.control.end</end-selector>
-		<subrecipes>
-			<include-root-recipes />
-		</subrecipes>
-	</recipe>
-	
-<!--functions-->
-	<recipe name="lua.container.function">
-	
-		<class>ESBaseItem</class>
-		<start-selector>lua.container.function.definition:has-child(name:capture(name)) > lua.local-function:capture(itemizer-firstused)</start-selector>
-		<end-selector>lua.container.function.definition > lua.keyword.control.end</end-selector>
-		<subrecipes>
-			<include-root-recipes />
-		</subrecipes>
-				
-	</recipe>
-	
-	<recipe name="lua.container.function">
-	
-		<class>ESBaseItem</class>
-		<start-selector>lua.container.function.definition > lua.local-function:capture(name)</start-selector>
-		<end-selector>lua.container.function.definition > lua.keyword.control.end</end-selector>
-		<subrecipes>
-			<include-root-recipes />
-		</subrecipes>
-				
 	</recipe>
 		
 </itemizer>

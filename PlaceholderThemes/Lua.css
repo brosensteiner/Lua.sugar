@@ -3,7 +3,7 @@
     @placeholder Lua
     @author Bernhard Rosensteiner <brosensteiner@gmail.com>
 */
-not(lua.comment, lua.string) {
+:not(lua.comment, lua.string) {
 	spell-check: disabled;
 }
 
@@ -46,15 +46,15 @@ lua.loop.body > lua.keyword.control.in + lua.language.general-word {
 	font-weight: bold;
 }
 
-lua.local-function + lua.balanced.parenthesis > lua.language.separator.comma,
-lua.function.name + lua.balanced.parenthesis > lua.language.separator.comma,
+lua.local-function + lua.balanced.parentheses > lua.language.separator.comma,
+lua.function.name + lua.balanced.parentheses > lua.language.separator.comma,
 lua.loop.body > lua.language.separator.comma,
 lua.function-argument > lua.language.separator.comma {
 	color: #f93232;
 }
 
-lua.punctuation.open-parenthesis,
-lua.punctuation.close-parenthesis {
+lua.punctuation.open-parentheses,
+lua.punctuation.close-parentheses {
 	color: #5e5f5f;
 	font-weight: normal;
 }

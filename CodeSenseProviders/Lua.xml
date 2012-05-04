@@ -28,13 +28,13 @@ THE SOFTWARE.
 
 <!--lua standard library functions-->
 	<provider>
-		<selector>source.Lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parenthesis, lua.loop.body, lua.if.body, lua.balanced</selector>
+		<selector>source.Lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parentheses, lua.loop.body, lua.if.body, lua.balanced</selector>
 		<completions>com.rosensteiner.Lua.functions</completions>
 		<complete-match>(?&lt;!\.)[a-z]+</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parenthesis, lua.loop.body, lua.balanced</selector>
+		<selector>source.Lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parentheses, lua.loop.body, lua.balanced</selector>
 		<completions>com.rosensteiner.Lua.libraries</completions>
 		<complete-match>(?&lt;!\.)[a-zL]+</complete-match>
 	</provider>

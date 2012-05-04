@@ -27,28 +27,28 @@ THE SOFTWARE.
 <action-recipes>
 
 	<snippet id="actions.snippets.lua.WrapBraces" category="actions.snippets.lua">
-	    <title>auto curly braces</title>
+	    <title>matched curly braces</title>
 	<text>{${EDITOR_SELECTION:${1:...}}}$0</text>
 		<key-equivalent>shift {</key-equivalent>
 	    <syntax-context>source.Lua, source.Lua :not(string)</syntax-context>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.WrapBracket" category="actions.snippets.lua">
-		<title>auto square brackets</title>
+		<title>matched square brackets</title>
 		<key-equivalent>shift [</key-equivalent>
 		<text>[${EDITOR_SELECTION:${1:...}}]$0</text>
 		<syntax-context>source.Lua, source.Lua :not(string)</syntax-context>
 	</snippet>
 	
-	<snippet id="actions.snippets.lua.WrapParenthesis" category="actions.snippets.lua">
-		<title>auto parenthesis</title>
+	<snippet id="actions.snippets.lua.Wrapparentheses" category="actions.snippets.lua">
+		<title>matched parentheses</title>
 		<key-equivalent>cmd (</key-equivalent>
 		<text>\(${EDITOR_SELECTION:${1:...}}\)$0</text>
 		<syntax-context>source.Lua, source.Lua :not(string)</syntax-context>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.WrapMultiline" category="actions.snippets.lua">
-		<title>auto multiline quotes</title>
+		<title>matched multiline quotes</title>
 		<key-equivalent>command shift [</key-equivalent>
 		<text>[[
 ${EDITOR_SELECTION:${1:multiline string}}
@@ -57,14 +57,14 @@ ${EDITOR_SELECTION:${1:multiline string}}
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.WrapDoubleQuote" category="actions.snippets.lua">
-		<title>auto double quotes</title>
+		<title>matched double quotes</title>
 		<key-equivalent>option "</key-equivalent>
 		<text>"${EDITOR_SELECTION:${1:string}}"$0</text>
 		<syntax-context>source.Lua, source.Lua :not(escape)</syntax-context>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.WrapSingleQuote" category="actions.snippets.lua">
-		<title>auto single quotes</title>
+		<title>matched single quotes</title>
 		<key-equivalent>shift '</key-equivalent>
 		<text>'${EDITOR_SELECTION:${1:string}}'$0</text>
 		<syntax-context>source.Lua, source.Lua :not(escape)</syntax-context>
