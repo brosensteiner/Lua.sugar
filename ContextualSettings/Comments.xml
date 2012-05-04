@@ -4,7 +4,7 @@
 @author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
 @copyright 	 The MIT License
 
-Copyright (c) 2010 Bernhard Rosensteiner
+Copyright (c) 2012 Bernhard Rosensteiner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -36,10 +36,10 @@ THE SOFTWARE.
         <value>--]]</value>
     </setting>
 
-    <setting name="comment-multiline-end-inert">
+    <!--<setting name="comment-multiline-end-inert">
         <syntax-context>source.Lua, source.Lua *</syntax-context>
         <value>--</value>
-    </setting>
+    </setting>-->
 
     <setting name="comment-singleline-start">
         <syntax-context>source.Lua, source.Lua *</syntax-context>
