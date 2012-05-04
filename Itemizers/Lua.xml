@@ -26,11 +26,20 @@ THE SOFTWARE.
 -->
 <itemizer>
 	
-	<!--function-->
 	<recipe name="lua.container.function.named">
-		<start-selector>lua.function.definition:has-child(name:capture(name)):capture(itemizer-firstused) + * + open-parentheses:capture(open-parameters) ~ close-parentheses:capture(close-parameters)</start-selector>
+		<start-selector>lua.function.definition-named:has-child(name:capture(name)):capture(itemizer-firstused) + * + open-parentheses:capture(open-parameters) ~ close-parentheses:capture(close-parameters)</start-selector>
 		<end-selector>Lua lua.keyword.control.end</end-selector>
 		<subrecipes>
+			<include recipe="lua.container.function.named" />
+			<include-root-recipes/>
+		</subrecipes>
+	</recipe>
+	<recipe name="lua.container.function.anonymous">
+		<class>ESJSAnonymousFunctionItem</class>
+		<start-selector>lua.function.definition-anonymous:capture(itemizer-firstused)</start-selector>
+		<end-selector>Lua lua.keyword.control.end</end-selector>
+		<subrecipes>
+			<include recipe="lua.container.function.named" />
 			<include-root-recipes/>
 		</subrecipes>
 	</recipe>

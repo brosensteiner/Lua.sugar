@@ -62,11 +62,11 @@ THE SOFTWARE.
 			<zone name="lua.comment.block">
 			    <starts-with>
 			        <expression>--\[(=*)\[</expression>
-			        <capture number="0" name="lua.punctuation.definition.comment"/>
+			        <capture number="0" name="lua.punctuation.comment"/>
 			    </starts-with>
 			    <ends-with>
 			        <expression>(--)?\]\1\]</expression>
-			        <capture number="0" name="lua.punctuation.definition.comment"/>
+			        <capture number="0" name="lua.punctuation.comment"/>
 			    </ends-with>
 			    <subzones><!--stolen from php sugar-->
 			    	<zone name="markup.link">
@@ -77,7 +77,7 @@ THE SOFTWARE.
 			
 			<zone name="lua.comment.line.double-dash">
 			    <expression>(--)(?!\[\[).*$\n?</expression>
-			    <capture number="1" name="lua.punctuation.definition.comment"/>
+			    <capture number="1" name="lua.punctuation.comment"/>
 			</zone>
 		
 		</collection>
@@ -278,13 +278,19 @@ THE SOFTWARE.
 		</collection>
 	
 		<collection name="FunctionDef">
-			<zone name="lua.container.function.definition">
-				<expression>((\blocal\b\s+)?(\bfunction\b))\s*([a-zA-Z0-9\.:_]+)?</expression>
-				<capture number="1" name="lua.local-function"/><!--only for itemizer catching-->
-				<capture number="2" name="lua.keyword.control.local"/>
-				<capture number="3" name="lua.keyword.control.function"/>
-				<capture number="4" name="lua.function.name"/>
+		
+			<zone name="lua.container.function.definition-named">
+				<expression>(\blocal\s+)?(\bfunction\b)\s*([a-zA-Z0-9\.:_]+)</expression>
+				<capture number="1" name="lua.keyword.control.local"/>
+				<capture number="2" name="lua.keyword.control.function"/>
+				<capture number="3" name="lua.function.name"/>
 			</zone>
+			<zone name="lua.container.function.definition-anonymous">
+				<expression>(\blocal\s+)?(\bfunction\b)</expression>
+				<capture number="1" name="lua.keyword.control.local"/>
+				<capture number="2" name="lua.keyword.control.function"/>
+			</zone>
+			
 		</collection>
 	
 		<collection name="Function">
