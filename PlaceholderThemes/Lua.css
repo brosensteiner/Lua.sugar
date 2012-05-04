@@ -70,15 +70,6 @@ lua.punctuation.table-call {
 	font-weight: bold;
 }
 
-lua.function-call.table-key,
-lua.table.constructor {
-	background-color: #f3f2ff;
-}
-
-lua.table.index {
-	background-color: #f3f2ff;
-}
-
 lua.separator {
 	color: #f93232;
 }

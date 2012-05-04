@@ -85,6 +85,11 @@ THE SOFTWARE.
 		</subrecipes>
 	</recipe>
 	
+	<recipe name="lua.table">
+		<class>ESJSLiteralObjectItem</class>
+		<selector>lua.variable.assignment:has-child(name:capture(name)):capture(itemizer-firstused) + lua.table.constructor</selector>
+	</recipe>
+	
 	<recipe name="lua.comment">
 		<class>ESCommentItem</class>
 		<selector>lua.comment</selector>

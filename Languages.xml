@@ -4,7 +4,7 @@
 @author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
 @copyright 	 The MIT License
 
-Copyright (c) 2010 Bernhard Rosensteiner
+Copyright (c) 2012 Bernhard Rosensteiner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -34,16 +34,16 @@ THE SOFTWARE.
              
              <detectors>
                  <extension>lua</extension>
-                 <match-content lines="20">^#!\\.+\\lua</match-content> 
+                 <match-content lines="10">^#!\\.+\\lua</match-content> 
              </detectors>
      
              <meta>
              	<name>Lua</name>
-             	<description>Lua.sugar for Macrabbits Espresso</description>
+             	<description>Lua.sugar for Macrabbit´s Espresso</description>
              	<author>Bernhard Rosensteiner</author>
      			<identifier>com.rosensteiner.Sugar.Lua</identifier>
-     			<version status="preview">0.99</version>
-     			<download format="svn">http://bitbucket.org/bernhard/Lua.sugar</download>
+     			<version status="preview">0.998</version>
+     			<download format="svn">https://github.com/brosensteiner/Lua.sugar</download>
              </meta>
              
           </language>

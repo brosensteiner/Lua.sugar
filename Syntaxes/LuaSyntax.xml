@@ -35,7 +35,6 @@ THE SOFTWARE.
     	<include collection="Variables" />
     	<include collection="Comments" />
     	<include collection="Operators" />
-    	<include collection="FlowControl" />
     	<include collection="ControlKeywords" />
     	<include collection="LuaLanguage" />
     	<include collection="Numeric" />
@@ -84,6 +83,12 @@ THE SOFTWARE.
 		
 		<collection name="Variables">
 		
+			<zone name="lua.variable.assignment">
+				<expression>([a-zA-Z0-9_]*)\s*(=(?!=))</expression>
+				<capture number="1" name="lua.variable.assignment.name"/>
+				<capture number="2" name="lua.keyword.operator.assignment"/>
+			</zone>
+		
 			<zone name="lua.global.variable">	<!--as long as Lua uses the _[A-Z] pattern for global variables we don´t have to worry about new ones in future Lua versions, otherwise we must begin to be more specific-->
 			    <expression>\b_[A-Z]+\b</expression>
 			</zone>
@@ -106,15 +111,11 @@ THE SOFTWARE.
 			
 		</collection>
 		
-		<collection name="FlowControl">
-			     
-			     <zone name="lua.keyword.control">
-			         <expression>\b(repeat|while|for|if)\b</expression>
-			     </zone>
-			
-		</collection>
-		
 		<collection name="ControlKeywords">
+		
+			<zone name="lua.keyword.control">
+			    <expression>\b(repeat|while|for|if)\b</expression>
+			</zone>
 		
 		    <zone name="lua.keyword.control">
 		        <expression>\b(return|local|elseif|else|do)\b</expression>
