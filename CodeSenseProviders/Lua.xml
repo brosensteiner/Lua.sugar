@@ -28,98 +28,98 @@ THE SOFTWARE.
 
 <!--lua standard library functions-->
 	<provider>
-		<selector>source.Lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parentheses, lua.loop.body, lua.if.body, lua.balanced</selector>
+		<selector>lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parentheses, lua.loop.body, lua.if.body, lua.balanced</selector>
 		<completions>com.rosensteiner.Lua.functions</completions>
 		<complete-match>(?&lt;!\.)[a-z]+</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parentheses, lua.loop.body, lua.balanced</selector>
+		<selector>lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parentheses, lua.loop.body, lua.balanced</selector>
 		<completions>com.rosensteiner.Lua.libraries</completions>
 		<complete-match>(?&lt;!\.)[a-zL]+</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.debug-functions</completions>
 		<complete-match>(?&lt;=debug\.)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.os-functions</completions>
 		<complete-match>(?&lt;=os\.)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua :not(lua.escape, lua.string, lua.string *, lua.comment, lua.shebang)</selector>
+		<selector>lua, lua :not(lua.escape, lua.string, lua.string *, lua.comment, lua.shebang)</selector>
 		<completions>com.rosensteiner.Lua.colon-functions</completions>
 		<complete-match>(?&lt;=[a-zA-Z0-9_]:)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.math-functions</completions>
 		<complete-match>(?&lt;=math\.)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.table-functions</completions>
 		<complete-match>(?&lt;=table\.)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.string-functions</completions>
 		<complete-match>(?&lt;=string\.)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.package-functions</completions>
 		<complete-match>(?&lt;=package\.)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.io-functions</completions>
 		<complete-match>(?&lt;=io\.)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.coroutine-functions</completions>
 		<complete-match>(?&lt;=coroutine\.)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.luaL-functions</completions>
 		<complete-match>(?&lt;=luaL_)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.lua-functions</completions>
 		<complete-match>(?&lt;=lua_)[a-z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.lpeg-functions</completions>
 		<complete-match>(?&lt;=lpeg\.)[a-zA-Z]*</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>source.Lua, source.Lua *</selector>
+		<selector>lua, lua *</selector>
 		<completions>com.rosensteiner.Lua.re-functions</completions>
 		<complete-match>(?&lt;=re\.)[a-zA-Z]*</complete-match>
 	</provider>
 
 <!--character classes in pattern matching functions (e.g. string.find)-->	
 	<provider>
-		<selector>source.Lua lua.string, source.Lua * lua.string</selector>
+		<selector>lua lua.string, lua * lua.string</selector>
 		<completions>com.rosensteiner.Lua.character-classes</completions>
 		<complete-match>%[a-zA-Z]{,2}</complete-match>
 	</provider>
@@ -133,7 +133,7 @@ THE SOFTWARE.
 	
 <!--lua metamethods-->
 	<provider>
-		<selector>source.Lua, source.Lua :not(lua.escape, lua.string, lua.string *, lua.comment)</selector>
+		<selector>lua, lua :not(lua.escape, lua.string, lua.string *, lua.comment)</selector>
 		<completions>com.rosensteiner.Lua.metamethods</completions>
 		<complete-match>(?&lt;=__)[a-zA-Z0-9]*</complete-match>
 	</provider>

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-@description Defines the Lua comments
-@author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
-@copyright 	 The MIT License
+<!--The MIT License
 
-Copyright (c) 2012 Bernhard Rosensteiner
+Copyright (c) 2012 <brosensteiner@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,28 +19,27 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
--->
+THE SOFTWARE.-->
 <settings>
 
-    <setting name="comment-multiline-start">
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
-        <value>--[[</value>
-    </setting>
+	<setting name="comment-multiline-start">
+		<language-context>lua</language-context>
+		<value>--[[</value>
+	</setting>
 
-    <setting name="comment-multiline-end">
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
-        <value>--]]</value>
-    </setting>
+	<setting name="comment-multiline-end">
+		<language-context>lua</language-context>
+		<value>--]]</value>
+	</setting>
 
-    <!--<setting name="comment-multiline-end-inert">
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
-        <value>--</value>
-    </setting>-->
+	<setting name="comment-multiline-end-inert">
+		<language-context>lua</language-context>
+		<no-value/>
+	</setting>
 
-    <setting name="comment-singleline-start">
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
-        <value>--</value>
-    </setting>
-    
+	<setting name="comment-singleline-start">
+		<language-context>lua</language-context>
+		<value>--</value>
+	</setting>
+	
 </settings>

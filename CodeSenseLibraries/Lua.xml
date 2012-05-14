@@ -26,16 +26,15 @@ THE SOFTWARE.
 -->
 <codesense version="1.0">
 
-	<behavior>
-		<append-dynamic>
-			<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
-			<transform-into>(?1:$1:\( $1 \) $0)</transform-into>
-    	</append-dynamic>
-    	<confirm characters=")" />
-	</behavior>
-    
-	
    	<set name="com.rosensteiner.Lua.functions" casesensitive="true">
+   	
+   		<behavior>
+   			<append-dynamic>
+   				<matched-suffix>((\s*)(\(|=))|\s*[^(=\s]?</matched-suffix>
+   				<transform-into>(?1:$1:\( $1 \) $0)</transform-into>
+   			</append-dynamic>
+   			<confirm characters=")" />
+   		</behavior>
    	
    		<completion string="assert" />
    		<completion string="collectgarbage" />
@@ -323,7 +322,7 @@ THE SOFTWARE.
 		<completion string="setvbuf" />
 		<completion string="write" />
 		
-	<!--string functions which make sense here-->
+		<!--string functions which make sense here-->
 		<completion string="byte">
 				<behavior>
 					<append-dynamic>

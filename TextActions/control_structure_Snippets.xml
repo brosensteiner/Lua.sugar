@@ -35,7 +35,7 @@ THE SOFTWARE.
         
 end
 $0</text>
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
+        <syntax-context>language-root.lua, language-root.lua *</syntax-context>
         <text-trigger>nfor</text-trigger>
     </snippet>
     
@@ -47,7 +47,7 @@ $0</text>
         
 end
 $0</text>
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
+        <syntax-context>language-root.lua, language-root.lua *</syntax-context>
         <text-trigger>gfor</text-trigger>
     </snippet>
     
@@ -60,7 +60,7 @@ $0</text>
             
 end
 $0</text>
-            <syntax-context>source.Lua, source.Lua *</syntax-context>
+            <syntax-context>language-root.lua, language-root.lua *</syntax-context>
             <text-trigger>while</text-trigger>
         </snippet>
         
@@ -73,7 +73,7 @@ $0</text>
                     
 until ${2:condition}
 $0</text>
-                    <syntax-context>source.Lua, source.Lua *</syntax-context>
+                    <syntax-context>language-root.lua, language-root.lua *</syntax-context>
                     <text-trigger>repeat</text-trigger>
                 </snippet>
 

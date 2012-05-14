@@ -33,7 +33,7 @@ THE SOFTWARE.
 	${3:&lt;...&gt;}
 end
 $0</text>
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
+        <syntax-context>language-root.lua, language-root.lua *</syntax-context>
         <text-trigger>func</text-trigger>
     </snippet>
     
@@ -44,7 +44,7 @@ $0</text>
 	${3:&lt;...&gt;}
 end
 $0</text>
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
+        <syntax-context>language-root.lua, language-root.lua *</syntax-context>
         <text-trigger>lfunc</text-trigger>
     </snippet>
     
@@ -53,7 +53,7 @@ $0</text>
         <title>new function at one line</title>
         <text>function ${1:&lt;name&gt;} (${2:&lt;arguments&gt;}) ${3:&lt;...&gt;} end
 $0</text>
-        <syntax-context>source.Lua, source.Lua *</syntax-context>
+        <syntax-context>language-root.lua, language-root.lua *</syntax-context>
         <text-trigger>func1</text-trigger>
     </snippet> 
 

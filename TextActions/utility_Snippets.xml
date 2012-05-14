@@ -30,7 +30,7 @@ THE SOFTWARE.
 	<snippet id="actions.snippets.lua.shebang" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.shebang">
 		<title>shebang</title>
 		<text>#!/usr/local/bin/lua</text>
-		<syntax-context>source.Lua</syntax-context>
+		<syntax-context>language-root.lua</syntax-context>
 		<text-trigger>she</text-trigger>
 	</snippet>
 	
@@ -38,7 +38,7 @@ THE SOFTWARE.
 	<snippet id="actions.snippets.lua.print" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.print">
 		<title>print string</title>
 		<text>print ( ${1:"${2:&lt;string&gt;}"} )$0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>pp</text-trigger>
 	</snippet>
         
@@ -46,210 +46,210 @@ THE SOFTWARE.
 	<snippet id="actions.snippets.lua.function.ioreadall" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioreadall">
 		<title>io.read("*all")</title>
 		<text>io.read( "*all" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>rall</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioreadline" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioreadline">
 		<title>io.read("*line")</title>
 		<text>io.read( "*line" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>rline</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioreadnumber" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioreadnumber">
 		<title>io.read("*number")</title>
 		<text>io.read( "*number" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>rnumb</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioreadcharacter" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioreadcharacter">
 		<title>io.read(character)</title>
 		<text>io.read( ${1:...} ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>rchar</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.read" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.read">
 		<title>io.open(..., "r")</title>
 		<text>io.open( ${1:...}, "r" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>opr</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.write" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.write">
 		<title>io.open(..., "w")</title>
 		<text>io.open( ${1:...}, "w" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>opw</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.append" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.append">
 		<title>io.open(..., "a")</title>
 		<text>io.open( ${1:...}, "a" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>opa</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.readplus" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.readplus">
 		<title>io.open(..., "r+")</title>
 		<text>io.open( ${1:...}, "r+" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>opr+</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.writeplus" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.writeplus">
 		<title>io.open(..., "w+")</title>
 		<text>io.open( ${1:...}, "w+" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>opw+</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.appendplus" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.appendplus">
 		<title>io.open(..., "a+")</title>
 		<text>io.open( ${1:...}, "a+" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>opa+</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.readb" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.readb">
 		<title>io.open(..., "rb")</title>
 		<text>io.open( ${1:...}, "rb" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>orb</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.writeb" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.writeb">
 		<title>io.open(..., "wb")</title>
 		<text>io.open( ${1:...}, "wb" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>owb</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.appendb" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.appendb">
 		<title>io.open(..., "ab")</title>
 		<text>io.open( ${1:...}, "ab" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>oab</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.assertread" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertread">
 		<title>assert( io.open( ..., "r" ) )</title>
 		<text>assert( io.open( ${1:...}, "r" ) ) $0 </text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aopr</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.assertwrite" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertwrite">
 		<title>assert( io.open( ..., "w" ) )</title>
 		<text>assert( io.open( ${1:...}, "w" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aopw</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.assertappend" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertappend">
 		<title>assert( io.open( ..., "a" ) )</title>
 		<text>assert( io.open( ${1:...}, "a" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aopa</text-trigger>
 	</snippet>
 		
 	<snippet id="actions.snippets.lua.function.ioopen.assertreadplus" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertreadplus">
 		<title>assert( io.open( ..., "r+" ) )</title>
 		<text>assert( io.open( ${1:...}, "r+" ) ) $0 </text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aor+</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.assertwriteplus" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertwriteplus">
 		<title>assert( io.open( ..., "w+" ) )</title>
 		<text>assert( io.open( ${1:...}, "w+" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aow+</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.assertappendplus" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertappendplus">
 		<title>assert( io.open( ..., "a+" ) )</title>
 		<text>assert( io.open( ${1:...}, "a+" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aoa+</text-trigger>
 	</snippet>	
 	
 	<snippet id="actions.snippets.lua.function.ioopen.assertreadb" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertreadb">
 		<title>assert( io.open( ..., "rb" ) )</title>
 		<text>assert( io.open( ${1:...}, "rb" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aorb</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.assertwriteb" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertwriteb">
 		<title>assert( io.open( ..., "wb" ) )</title>
 		<text>assert( io.open( ${1:...}, "wb" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aowb</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.ioopen.assertappendb" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.ioopen.assertappendb">
 		<title>assert( io.open( ..., "ab" ) )</title>
 		<text>assert( io.open( ${1:...}, "ab" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>aoab</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.iopopen.read" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.iopopen.read">
 		<title>io.popen( ..., "r" )</title>
 		<text>io.popen( ${1:...}, "r" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>popr</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.iopopen.write" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.iopopen.write">
 		<title>io.popen( ..., "w" )</title>
 		<text>io.popen( ${1:...}, "w" ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>popw</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.iopopen.assertread" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.iopopen.assertread">
 		<title>assert( io.popen( ..., "r" ) )</title>
 		<text>assert( io.popen( ${1:...}, "r" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>apor</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.function.iopopen.assertwrite" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.function.iopopen.assertwrite">
 		<title>assert( io.popen( ..., "w" ) )</title>
 		<text>assert( io.popen( ${1:...}, "w" ) ) $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>apow</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.TODO" category="actions.snippets.lua/actions.snippets.lua.TODO">
 		<title>-- TODO:</title>
 		<text>-- TODO: $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>todo</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.copy-function" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.copy-function">
 		<title>copy function</title>
 		<text>${1:text to copy} = $1 $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>copy</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.local_copy-function" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.local_copy-function">
 		<title>copy function</title>
 		<text>local ${1:text to copy} = $1 $0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>lcopy</text-trigger>
 	</snippet>
 	
 	<snippet id="actions.snippets.lua.require" category="actions.snippets.lua/lua.code.snippets/actions.snippets.lua.require">
 		<title>copy function</title>
 		<text>require "${1:module}"$0</text>
-		<syntax-context>source.Lua, source.Lua *</syntax-context>
+		<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 		<text-trigger>req</text-trigger>
 	</snippet>
     

@@ -26,9 +26,9 @@ THE SOFTWARE.
 -->
 <settings>
 
-     <language id="com.rosensteiner.Lua">
+	<language id="com.rosensteiner.Lua">
 
-             <syntax-name>source.Lua</syntax-name>
+		<syntax-name>language-root.lua</syntax-name>
              
              <name>Lua</name>
              
@@ -37,15 +37,15 @@ THE SOFTWARE.
                  <match-content lines="10">^#!\\.+\\lua</match-content> 
              </detectors>
      
-             <meta>
-             	<name>Lua</name>
-             	<description>Lua.sugar for Macrabbit´s Espresso</description>
-             	<author>Bernhard Rosensteiner</author>
-     			<identifier>com.rosensteiner.Sugar.Lua</identifier>
-     			<version status="preview">0.998</version>
-     			<download format="svn">https://github.com/brosensteiner/Lua.sugar</download>
-             </meta>
+		<meta>
+			<name>Lua</name>
+			<description>Lua.sugar for Macrabbit´s Espresso</description>
+			<author>Bernhard Rosensteiner</author>
+			<identifier>com.rosensteiner.Sugar.Lua</identifier>
+			<version status="preview">0.998</version>
+			<download format="svn">https://github.com/brosensteiner/Lua.sugar</download>
+		</meta>
              
-          </language>
+	</language>
          
 </settings> 

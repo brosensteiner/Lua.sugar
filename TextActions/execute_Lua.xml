@@ -35,7 +35,7 @@ THE SOFTWARE.
                     <!--<output>text</output>-->
         
                     <!--<undo_name>My Action</undo_name>-->
-			<syntax-context>source.Lua, source.Lua *</syntax-context>
+			<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 			<selection-context>none</selection-context>
 		</setup>
     </action>
@@ -50,7 +50,7 @@ THE SOFTWARE.
                 <!--<output>text</output>-->
     
                 <!--<undo_name>My Action</undo_name>-->
-             <syntax-context>source.Lua, source.Lua *</syntax-context>
+             <syntax-context>language-root.lua, language-root.lua *</syntax-context>
               <selection-context>none</selection-context>
           </setup>
       </action>
