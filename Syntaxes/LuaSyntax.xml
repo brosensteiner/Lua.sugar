@@ -310,10 +310,10 @@ THE SOFTWARE.
 	
 		<collection name="Function">
 		
-			<zone name="lua.container.library-function.call.magical"><!--special, because of magical character matching in patterns-->
+			<zone name="lua.container.library-function-call.magical"><!--special, because of magical character matching in patterns-->
                 <starts-with>
                     <expression>(string)(\.)(find|gsub|match|gmatch)\s*(\()</expression>
-                    <capture number="1" name="lua.library-call"/>
+                    <capture number="1" name="lua.function-call.library-call"/>
                     <capture number="2" name="lua.keyword.operator.call.point"/>
                     <capture number="3" name="lua.function-call"/>
                     <capture number="4" name="lua.punctuation.open-parentheses"/>
@@ -327,10 +327,10 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.container.library-function.call.format"><!--special, because of formatting commands, context is for LuaTeX injection in ConTeXt syntax-->
+            <zone name="lua.container.library-function-call.format"><!--special, because of formatting commands, context is for LuaTeX injection in ConTeXt syntax-->
                 <starts-with>
                     <expression>(string)(\.)(format)\s*(\()</expression>
-                    <capture number="1" name="lua.library-call"/>
+                    <capture number="1" name="lua.function-call.library-call"/>
                     <capture number="2" name="lua.keyword.operator.call.point"/>
                     <capture number="3" name="lua.function-call"/>
                     <capture number="4" name="lua.punctuation.open-parentheses"/>
@@ -345,10 +345,10 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.container.library-function.call.io-read">
+            <zone name="lua.container.library-function-call.io-read">
                 <starts-with>
                     <expression>(?&lt;=\.|:)(read)\s*(\()</expression>
-                    <capture number="1" name="lua.library-call"/>
+                    <capture number="1" name="lua.function-call.library-call"/>
                     <capture number="2" name="lua.keyword.operator.call.point"/>
                     <capture number="3" name="lua.keyword.operator.call.colon"/>
                     <capture number="4" name="lua.function-call"/>
@@ -363,10 +363,10 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.container.library-function.call.io-open">
+            <zone name="lua.container.library-function-call.io-open">
                 <starts-with>
                     <expression>(io)(?:(\.)|(:))(open)\s*(\()</expression>
-                    <capture number="1" name="lua.library-call"/>
+                    <capture number="1" name="lua.function-call.library-call"/>
                     <capture number="2" name="lua.keyword.operator.call.point"/>
                     <capture number="3" name="lua.keyword.operator.call.colon"/>
                     <capture number="4" name="lua.function-call"/>
@@ -381,10 +381,10 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.container.library-function.call.io-popen">
+            <zone name="lua.container.library-function-call.io-popen">
                 <starts-with>
                     <expression>(io)(?:(\.)|(:))(popen)\s*(\()</expression>
-                    <capture number="1" name="lua.library-call"/>
+                    <capture number="1" name="lua.function-call.library-call"/>
                     <capture number="2" name="lua.keyword.operator.call.point"/>
                     <capture number="3" name="lua.keyword.operator.call.colon"/>
                     <capture number="4" name="lua.function-call"/>
@@ -399,7 +399,7 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.container.library-function.call.file-seek">
+            <zone name="lua.container.library-function-call.file-seek">
                 <starts-with>
                     <expression>(?&lt;=:)(seek)\s*(\()</expression>
                     <capture number="1" name="lua.function-call"/>
@@ -414,7 +414,7 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.container.library-function.call.setvbuf">
+            <zone name="lua.container.library-function-call.setvbuf">
             	<starts-with>
                     <expression>(?&lt;=:)(setvbuf)\s*(\()</expression>
                     <capture number="1" name="lua.function-call"/>
@@ -429,7 +429,7 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.container.library-function.call.collectgarbage">                <starts-with>
+            <zone name="lua.container.library-function-call.collectgarbage">                <starts-with>
                     <expression>(collectgarbage)\s*(\()</expression>
                     <capture number="1" name="lua.function-call"/>
                     <capture number="2" name="lua.punctuation.open-parentheses"/>
@@ -458,7 +458,7 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.library-call">
+            <zone name="lua.function-call.library-call">
                 <expression>[a-zA-Z0-9_]+(?=\.|:)</expression>
             </zone>
             
@@ -522,7 +522,7 @@ THE SOFTWARE.
         
         	<zone name="lua.constant.language.math-constants">
         	    <expression>\b(math)(\.)(pi|huge)\b</expression>
-        	    <capture number="1" name="lua.library-call"/>
+        	    <capture number="1" name="lua.function-call.library-call"/>
         	    <capture number="2" name="lua.keyword.operator.call.point"/>
         	</zone>
         
@@ -537,7 +537,7 @@ THE SOFTWARE.
             
             <zone name="lua.constant.language.predefined-streams">
             	<expression>\b(io)(\.)(std(in|out|err)\b)</expression>
-            	<capture number="1" name="lua.library-call"/>
+            	<capture number="1" name="lua.function-call.library-call"/>
             	<capture number="2" name="lua.keyword.operator.call.point"/>
             </zone>
             
