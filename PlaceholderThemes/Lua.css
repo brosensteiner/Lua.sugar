@@ -28,19 +28,19 @@ lua.function-argument.collectgarbage > lua.string.quoted > lua.keyword.additiona
 	color: #d44950;
 }
 
+lua.global.variable,
 lua.keyword.additional.magic-character {
 	color: #86bcff;
 	font-weight: bold;
 }
 
-lua.global.variable,
-lua.variable,
-lua.function.name {
+lua.variable {
 	color: #7ac54d;
+	font-style: italic;
 }
 
 lua.library-call,
-lua.loop.body > lua.keyword.control.in + lua.language.general-word {
+lua.loop.body > lua.keyword.control.in + lua.language.word {
 	font-weight: bold;
 }
 
@@ -51,17 +51,17 @@ lua.function-argument > lua.language.separator.comma {
 	color: #f93232;
 }
 
-lua.punctuation.open-parentheses,
-lua.punctuation.close-parentheses {
+lua.open-parentheses,
+lua.close-parentheses {
 	color: #5e5f5f;
 	font-weight: normal;
 }
 
 lua.keyword.operator.call,
-lua.punctuation.open-brace,
-lua.punctuation.close-brace,
-lua.punctuation.open-bracket,
-lua.punctuation.close-bracket,
+lua.open-brace,
+lua.close-brace,
+lua.open-bracket,
+lua.close-bracket,
 lua.function-call.table-key,
 lua.punctuation.table-call {
 	color: #7f7f7f;

@@ -554,7 +554,7 @@ THE SOFTWARE.
         </collection>
         
         <collection name="GeneralWord">
-        	<zone name="lua.language.general-word"> <!--for better color highlighting we capture all words, so we can make useful definitions in Lua.css-->
+        	<zone name="lua.language.word"> <!--for better color highlighting we capture all words, so we can make useful definitions in Lua.css-->
         	    <expression>\b[a-zA-Z0-9_]+\b</expression>
         	</zone>
         </collection>
