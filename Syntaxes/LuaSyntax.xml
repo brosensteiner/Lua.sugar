@@ -28,8 +28,9 @@ THE SOFTWARE.
 
     <zones>
     
-    	<zone name="lua.shebang">
-    	    <expression>^\s*#!.+?lua</expression>
+    	<zone name="lua.comment.shebang">
+    	    <expression>^(#!).*?\blua\b.*?$[\n\r]*</expression>
+    	    <capture number="1" name="punctuation.definition.begin"/>
     	</zone>
     	
     	<include collection="Variables" />
@@ -78,7 +79,7 @@ THE SOFTWARE.
 			        <capture number="0" name="punctuation.definition.begin"/>
 			    </starts-with>
 			    <ends-with>
-			        <expression>\n</expression>
+			        <expression>$[\n\r]*</expression>
 			    </ends-with>
 			    <subzones>
 			    	<include collection="Markup" />

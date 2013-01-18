@@ -7,11 +7,6 @@
 	spell-check: disabled;
 }
 
-lua.shebang {
-	color: #d44950;
-	font-weight: bold;
-}
-
 lua.metamethod {
 	color: #d44950;
 }
