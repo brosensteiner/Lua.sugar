@@ -7,10 +7,6 @@
 	spell-check: disabled;
 }
 
-lua.metamethod {
-	color: #d44950;
-}
-
 lua.function-argument.io-read > lua.constant.numeric,
 lua.string.quoted > lua.keyword.additional.PEG,
 lua.function-argument.io-read > lua.string.quoted > lua.keyword.additional.io-read,
@@ -21,17 +17,6 @@ lua.function-argument.file-setvbuf > lua.string.quoted > lua.keyword.additional.
 lua.function-argument.file-seek > lua.string.quoted > lua.keyword.additional.file-seek,
 lua.function-argument.collectgarbage > lua.string.quoted > lua.keyword.additional.collectgarbage {
 	color: #d44950;
-}
-
-lua.global.variable,
-lua.keyword.additional.magic-character {
-	color: #86bcff;
-	font-weight: bold;
-}
-
-lua.variable {
-	color: #7ac54d;
-	font-style: italic;
 }
 
 lua.library-call,
@@ -46,17 +31,7 @@ lua.function-argument > lua.language.separator.comma {
 	color: #f93232;
 }
 
-lua.open-parentheses,
-lua.close-parentheses {
-	color: #5e5f5f;
-	font-weight: normal;
-}
-
 lua.keyword.operator.call,
-lua.open-brace,
-lua.close-brace,
-lua.open-bracket,
-lua.close-bracket,
 lua.function-call.table-key,
 lua.punctuation.table-call {
 	color: #7f7f7f;

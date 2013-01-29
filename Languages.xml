@@ -33,7 +33,7 @@ THE SOFTWARE.
              <name>Lua</name>
              
              <detectors>
-                 <extension>lua</extension>
+                 <extension casesensitive="true">lua</extension>
                  <match-content lines="10">^#!\\.+\\lua</match-content> 
              </detectors>
      
