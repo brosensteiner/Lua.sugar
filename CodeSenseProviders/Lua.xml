@@ -182,7 +182,7 @@ THE SOFTWARE.
 	
 <!--__mode = "..."-->
 	<provider>
-		<selector>lua.metamethod.mode + lua.keyword.operator.assignment + lua.string.quoted, lua.metamethod.mode + lua.keyword.operator.assignment + lua.string.quoted > lua.punctuation.string.quoted.end</selector>
+		<selector>lua.metamethod.mode + lua.operator.assignment + lua.string.quoted, lua.metamethod.mode + lua.operator.assignment + lua.string.quoted > lua.punctuation.string.quoted.end</selector>
 		<completions>com.rosensteiner.Lua.metamethod.mode</completions>
 		<complete-match>(?&lt;="|')[kv]*</complete-match>
 	</provider>
