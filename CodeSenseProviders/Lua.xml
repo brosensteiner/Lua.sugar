@@ -28,13 +28,13 @@ THE SOFTWARE.
 
 <!--lua standard library functions-->
 	<provider>
-		<selector>lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parentheses, lua.loop.body, lua.if.body, lua.balanced</selector>
+		<selector>lua, lua.function-argument, lua.container.function.definition, lua.close-parenthesis</selector>
 		<completions>com.rosensteiner.Lua.functions</completions>
 		<complete-match>(?&lt;!\.)[a-z]+</complete-match>
 	</provider>
 	
 	<provider>
-		<selector>lua, lua.function-argument, lua.container.function.definition, lua.punctuation.close-parentheses, lua.loop.body, lua.balanced</selector>
+		<selector>lua, lua.function-argument, lua.container.function.definition, lua.close-parenthesis</selector>
 		<completions>com.rosensteiner.Lua.libraries</completions>
 		<complete-match>(?&lt;!\.)[a-zL]+</complete-match>
 	</provider>
@@ -126,7 +126,7 @@ THE SOFTWARE.
 	
 <!--formatting commands for string.format()-->	
 	<provider>
-		<selector>lua.string.quoted.format, lua.string.quoted.format *, lua.punctuation.string.quoted.end.format</selector>
+		<selector>lua.string.format, lua.string.format *, lua.punctuation.string.end.format</selector>
 		<completions>com.rosensteiner.Lua.string-format</completions>
 		<complete-match>(?&lt;=%)</complete-match>
 	</provider>
@@ -140,7 +140,7 @@ THE SOFTWARE.
 	
 <!--io.read("...")-->
 	<provider>
-		<selector>lua.function-argument.io-read lua.string.quoted, lua.function-argument.io-read * lua.keyword.additional.magic-character, lua.function-argument.io-read > lua.string.quoted > lua.punctuation.string.quoted.end</selector>
+		<selector>lua.function-argument.io-read lua.string, lua.function-argument.io-read * lua.keyword.additional.magic-character, lua.function-argument.io-read > lua.string > lua.punctuation.string.end</selector>
 		<completions>com.rosensteiner.Lua.ioread.methods</completions>
 		<complete-match>(?&lt;="\*|'\*)[a-z]*</complete-match>
 	</provider>
@@ -161,28 +161,28 @@ THE SOFTWARE.
 	
 <!--file:seek("...")-->
 	<provider>
-		<selector>lua.function-argument.file-setvbuf > lua.string.quoted, lua.function-argument.file-setvbuf > lua.string.quoted > lua.punctuation.string.quoted.end</selector>
+		<selector>lua.function-argument.file-setvbuf > lua.string, lua.function-argument.file-setvbuf > lua.string > lua.punctuation.string.end</selector>
 		<completions>com.rosensteiner.Lua.filesetvbuf.methods</completions>
 		<complete-match>(?&lt;="|')[a-z]*</complete-match>
 	</provider>
 	
 <!--file:setvbuf ("...")-->
 	<provider>
-		<selector>lua.function-argument.file-seek > lua.string.quoted, lua.function-argument.file-seek > lua.string.quoted > lua.punctuation.string.quoted.end</selector>
+		<selector>lua.function-argument.file-seek > lua.string, lua.function-argument.file-seek > lua.string > lua.punctuation.string.end</selector>
 		<completions>com.rosensteiner.Lua.fileseek.methods</completions>
 		<complete-match>(?&lt;="|')[a-z]*</complete-match>
 	</provider>
 	
 <!--collectgarbage ("...")-->
 	<provider>
-		<selector>lua.function-argument.collectgarbage > lua.string.quoted, lua.function-argument.collectgarbage > lua.string.quoted > lua.punctuation.string.quoted.end</selector>
+		<selector>lua.function-argument.collectgarbage > lua.string, lua.function-argument.collectgarbage > lua.string > lua.punctuation.string.end</selector>
 		<completions>com.rosensteiner.Lua.collectgarbage.options</completions>
 		<complete-match>(?&lt;="|')[a-z]*</complete-match>
 	</provider>
 	
 <!--__mode = "..."-->
 	<provider>
-		<selector>lua.metamethod.mode + lua.operator.assignment + lua.string.quoted, lua.metamethod.mode + lua.operator.assignment + lua.string.quoted > lua.punctuation.string.quoted.end</selector>
+		<selector>lua.metamethod.mode + lua.operator.assignment + lua.string, lua.metamethod.mode + lua.operator.assignment + lua.string > lua.punctuation.string.end</selector>
 		<completions>com.rosensteiner.Lua.metamethod.mode</completions>
 		<complete-match>(?&lt;="|')[kv]*</complete-match>
 	</provider>

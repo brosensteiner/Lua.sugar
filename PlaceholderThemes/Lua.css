@@ -7,21 +7,28 @@
 	spell-check: disabled;
 }
 
-lua.function-argument.io-read > lua.constant.numeric,
-lua.string.quoted > lua.keyword.additional.PEG,
-lua.function-argument.io-read > lua.string.quoted > lua.keyword.additional.io-read,
-lua.function-argument.io-open > lua.string.quoted > lua.keyword.additional.io-open,
-lua.function-argument.io-open > lua.string.quoted > lua.keyword.additional.io-popen,
-lua.function-argument.io-popen > lua.string.quoted > lua.keyword.additional.io-popen,
-lua.function-argument.file-setvbuf > lua.string.quoted > lua.keyword.additional.file-setbuf,
-lua.function-argument.file-seek > lua.string.quoted > lua.keyword.additional.file-seek,
-lua.function-argument.collectgarbage > lua.string.quoted > lua.keyword.additional.collectgarbage {
+lua.function-argument.io-read > numeric,
+lua.string > lua.keyword.other.PEG,
+lua.function-argument.io-read > string > keyword.other.io-read,
+lua.function-argument.io-open > string > keyword.other.io-open,
+lua.function-argument.io-open > string > keyword.other.io-popen,
+lua.function-argument.io-popen > string > keyword.other.io-popen,
+lua.function-argument.file-setvbuf > string > keyword.other.file-setbuf,
+lua.function-argument.file-seek > string > keyword.other.file-seek,
+lua.function-argument.collectgarbage > string > keyword.other.collectgarbage {
 	color: #d44950;
 }
 
-lua.local-function + lua.balanced.parentheses > lua.language.delimiter.comma,
-lua.function.name + lua.balanced.parentheses > lua.language.delimiter.comma,
-lua.loop.body > lua.language.delimiter.comma,
-lua.function-argument > lua.language.delimiter.comma {
-	color: #f93232;
+lua.keyword.control.for + :not(control) + comma,
+lua.keyword.control.for + :not(control) + comma + :not(control) + comma,
+lua.keyword.control.for + :not(control) + comma + :not(control) + comma + :not(control) + comma,
+lua.keyword.control.for + :not(control) + comma  + :not(control) + comma + :not(control) + comma + :not(control) + comma,
+lua.keyword.control.for + :not(control) + comma + :not(control) + comma  + :not(control) + comma + :not(control) + comma + :not(control) + comma,
+
+lua.keyword.control.in + :not(control) + comma,
+lua.keyword.control.in + :not(control) + comma + :not(control) + comma,
+lua.keyword.control.in + :not(control) + comma + :not(control) + comma + :not(control) + comma,
+lua.keyword.control.in + :not(control) + comma  + :not(control) + comma + :not(control) + comma + :not(control) + comma,
+lua.keyword.control.in + :not(control) + comma + :not(control) + comma  + :not(control) + comma + :not(control) + comma + :not(control) + comma {
+	color: hsl(0, 94%, 58%);
 }
