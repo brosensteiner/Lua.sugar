@@ -374,11 +374,8 @@ THE SOFTWARE.
             <zone name="lua.container.library-function-call.io-read">
                 <starts-with>
                     <expression>(?&lt;=\.|:)(read)\s*(\()</expression>
-                    <capture number="1" name="lua.function-call.library-call"/>
-                    <capture number="2" name="lua.punctuation.delimiter.period"/>
-                    <capture number="3" name="lua.punctuation.delimiter.colon"/>
-                    <capture number="4" name="lua.function-call"/>
-                    <capture number="5" name="lua.open-parenthesis"/>
+                    <capture number="1" name="lua.function-call"/>
+                    <capture number="2" name="lua.open-parenthesis"/>
                 </starts-with>
                 <ends-with>
                     <expression>\)</expression>
@@ -567,7 +564,7 @@ THE SOFTWARE.
             	<capture number="2" name="lua.punctuation.delimiter.period"/>
             </zone>
             
-            <zone name="lua.punctuation.delimiter.comma"> <!--for better color highlighting we capture all commas, so we can make useful definitions in Lua.css-->
+            <zone name="lua.punctuation.delimiter.comma"> <!--for better color highlighting we capture all commas, so we can make nice definitions in Lua.css-->
                 <expression>,</expression>
             </zone>
             
@@ -580,7 +577,7 @@ THE SOFTWARE.
         </collection>
         
         <collection name="GeneralWord">
-        	<zone name="lua.language.word"> <!--for better color highlighting we capture all words, so we can make useful definitions in Lua.css-->
+        	<zone name="lua.language.word"> <!--for better color highlighting we capture all words, so we can make nice definitions in Lua.css-->
         	    <expression>\b[a-zA-Z0-9_]+\b</expression>
         	</zone>
         </collection>
@@ -638,6 +635,7 @@ THE SOFTWARE.
         </collection>
         
         <collection name="Functionargument-format">
+        
            	<zone name="lua.string.quoted.double.format">
            		<starts-with>
            		    <expression>(?&lt;=\()\s*(?:(")|('))</expression>
@@ -660,6 +658,7 @@ THE SOFTWARE.
           			<include collection="Additional"/>
            		</subzones> 
            	</zone>
+           	
         </collection>            
                     
 	</library>
