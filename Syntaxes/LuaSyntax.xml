@@ -35,10 +35,10 @@ THE SOFTWARE.
     	
     	<include collection="Variables" />
     	<include collection="Comments" />
+    	<include collection="Numeric" />
     	<include collection="Operators" />
     	<include collection="ControlKeywords" />
     	<include collection="LuaLanguage" />
-    	<include collection="Numeric" />
     	<include collection="FunctionDef"/>
     	<include collection="Function"/>
     	<include collection="Strings"/>
@@ -571,9 +571,14 @@ THE SOFTWARE.
         </collection>
         
         <collection name="Numeric">
-        	        <zone name="lua.numeric">
-        	            <expression>(?&lt;![\d.])\s0x[a-fA-F\d]+|\b(\d+(\.\d+)?([eE]-?\d+)?|\.\d+([eE]-?\d+)?)\b</expression>
-        	        </zone>
+ 
+        	<zone name="lua.numeric.hexadecimal">
+        	    <expression>\b0(x|X)[a-fA-F\d]+(\.[a-fA-F\d]+)?((p|P)(-|\+)\d+)?\b</expression>
+        	</zone>
+        	<zone name="lua.numeric">
+        	    <expression>\b(\d+(\.\d+)?([eE]-?\d+)?|\.\d+([eE]-?\d+)?)\b</expression>
+        	</zone>
+        	
         </collection>
         
         <collection name="GeneralWord">
@@ -583,8 +588,11 @@ THE SOFTWARE.
         </collection>
         
         <collection name="EscapeChar">
+        	<zone name="lua.escape.character.byte">
+        	    <expression>\\x\d{2}|\\\d{1,3}</expression>
+        	</zone>
         	<zone name="lua.escape.character">
-        	    <expression>\\[abfnrtv\W'"\!$%&amp;]|\\\d{1,3}</expression>
+        	    <expression>\\[abfnrtv\W'"\!$%&amp;]</expression>
         	</zone>
         </collection>
         

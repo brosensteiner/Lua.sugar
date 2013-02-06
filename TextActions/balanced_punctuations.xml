@@ -26,28 +26,28 @@ THE SOFTWARE.
 -->
 <action-recipes>
 
-	<snippet id="actions.snippets.lua.WrapBraces" category="actions.snippets.lua">
+	<snippet id="actions.snippets.lua.WrapBraces" category="actions.snippets.lua/lua.separated-matched">
 	    <title>matched curly braces</title>
 	<text>{${EDITOR_SELECTION:${1:...}}}$0</text>
 		<key-equivalent>shift {</key-equivalent>
 	    <syntax-context>language-root.lua, language-root.lua :not(string)</syntax-context>
 	</snippet>
 	
-	<snippet id="actions.snippets.lua.WrapBracket" category="actions.snippets.lua">
+	<snippet id="actions.snippets.lua.WrapBracket" category="actions.snippets.lua/lua.separated-matched">
 		<title>matched square brackets</title>
 		<key-equivalent>shift [</key-equivalent>
 		<text>[${EDITOR_SELECTION:${1:...}}]$0</text>
 		<syntax-context>language-root.lua, language-root.lua :not(string)</syntax-context>
 	</snippet>
 	
-	<snippet id="actions.snippets.lua.Wrapparentheses" category="actions.snippets.lua">
+	<snippet id="actions.snippets.lua.Wrapparentheses" category="actions.snippets.lua/lua.separated-matched">
 		<title>matched parentheses</title>
 		<key-equivalent>cmd (</key-equivalent>
 		<text>\(${EDITOR_SELECTION:${1:...}}\)$0</text>
 		<syntax-context>language-root.lua, language-root.lua :not(string)</syntax-context>
 	</snippet>
 	
-	<snippet id="actions.snippets.lua.WrapMultiline" category="actions.snippets.lua">
+	<snippet id="actions.snippets.lua.WrapMultiline" category="actions.snippets.lua/lua.separated-matched">
 		<title>matched multiline quotes</title>
 		<key-equivalent>command shift [</key-equivalent>
 		<text>[[
@@ -56,21 +56,21 @@ ${EDITOR_SELECTION:${1:multiline string}}
 		<syntax-context>language-root.lua, language-root.lua :not(escape)</syntax-context>
 	</snippet>
 	
-	<snippet id="actions.snippets.lua.WrapDoubleQuote" category="actions.snippets.lua">
+	<snippet id="actions.snippets.lua.WrapDoubleQuote" category="actions.snippets.lua/lua.separated-matched">
 		<title>matched double quotes</title>
 		<key-equivalent>option "</key-equivalent>
 		<text>"${EDITOR_SELECTION:${1:string}}"$0</text>
 		<syntax-context>language-root.lua, language-root.lua :not(escape)</syntax-context>
 	</snippet>
 	
-	<snippet id="actions.snippets.lua.WrapSingleQuote" category="actions.snippets.lua">
+	<snippet id="actions.snippets.lua.WrapSingleQuote" category="actions.snippets.lua/lua.separated-matched">
 		<title>matched single quotes</title>
 		<key-equivalent>shift '</key-equivalent>
 		<text>'${EDITOR_SELECTION:${1:string}}'$0</text>
 		<syntax-context>language-root.lua, language-root.lua :not(escape)</syntax-context>
 	</snippet>
 	
-	<snippet id="actions.snippets.lua.WrapInComment" category="actions.snippets.lua">
+	<snippet id="actions.snippets.lua.WrapInComment" category="actions.snippets.lua/lua.separated-matched">
 		<title>wrap in multiline comment</title>
 		<key-equivalent>cmd option c</key-equivalent>
 		<text>--[[

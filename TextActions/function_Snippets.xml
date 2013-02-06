@@ -27,7 +27,7 @@ THE SOFTWARE.
 <action-recipes>
 
 <!--new function-->
-    <snippet id="actions.snippets.lua.function.new-function" category="actions.snippets.lua/lua.code.snippets">
+    <snippet id="actions.snippets.lua.function.new-function" category="actions.snippets.lua/lua.code.snippets/lua.code.snippets.separated-newfunction">
         <title>new function</title>
         <text>function ${1:&lt;name&gt;} (${2:&lt;arguments&gt;})
 	${3:&lt;...&gt;}
@@ -38,7 +38,7 @@ $0</text>
     </snippet>
     
 <!--new local function-->
-	<snippet id="actions.snippets.lua.function.new-function" category="actions.snippets.lua/lua.code.snippets">
+	<snippet id="actions.snippets.lua.function.new-function" category="actions.snippets.lua/lua.code.snippets/lua.code.snippets.separated-newfunction">
         <title>new local function</title>
         <text>local function ${1:&lt;name&gt;} (${2:&lt;arguments&gt;})
 	${3:&lt;...&gt;}
@@ -49,7 +49,7 @@ $0</text>
     </snippet>
     
 <!--new one line function-->
-	<snippet id="actions.snippets.lua.function.new-function" category="actions.snippets.lua/lua.code.snippets">
+	<snippet id="actions.snippets.lua.function.new-function" category="actions.snippets.lua/lua.code.snippets/lua.code.snippets.separated-newfunction">
         <title>new function at one line</title>
         <text>function ${1:&lt;name&gt;} (${2:&lt;arguments&gt;}) ${3:&lt;...&gt;} end
 $0</text>

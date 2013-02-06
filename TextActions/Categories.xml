@@ -30,8 +30,35 @@ THE SOFTWARE.
 		<title>Lua</title>
 	</category>
 	
-	<category id="lua.code.snippets" show="sub">
+	<category id="lua.code.snippets" show="sub inline separated">
 		<title>code snippets</title>
+	</category>
+	
+	<category id="lua.separated-matched" show="inline separated">
+	</category>
+	
+	<category id="lua.separated-execute" show="inline separated">
+	</category>
+	
+	<!--code snippet separators-->
+	<category id="lua.code.snippets.separated-ioopen" show="inline separated">
+		<title>opening files</title>
+	</category>
+	
+	<category id="lua.code.snippets.separated-ioread" show="inline separated">
+		<title>reading files</title>
+	</category>
+	
+	<category id="lua.code.snippets.separated-assert" show="inline separated">
+		<title>assertions</title>
+	</category>
+	
+	<category id="lua.code.snippets.separated-newloop" show="inline separated">
+		<title>loops</title>
+	</category>
+	
+	<category id="lua.code.snippets.separated-newfunction" show="inline separated">
+		<title>functions</title>
 	</category>
 
 </action-categories>

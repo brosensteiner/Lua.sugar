@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<action-sort-instructions>
+
+	<sort-template>
+		<selector>lua.separated-execute</selector>
+		<selector>actions.snippets.lua</selector>
+		<selector>lua.separated-matched</selector>
+		<selector>lua.code.snippets</selector>
+	</sort-template>
+    
+</action-sort-instructions> 

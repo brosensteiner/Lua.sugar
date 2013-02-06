@@ -27,7 +27,7 @@ THE SOFTWARE.
 <action-recipes>
 
 <!--new numeric for loop-->
-    <snippet id="actions.snippets.lua.function.new-for-loop" category="actions.snippets.lua/lua.code.snippets">
+    <snippet id="actions.snippets.lua.function.new-for-loop" category="actions.snippets.lua/lua.code.snippets/lua.code.snippets.separated-newloop">
         <title>new numeric for loop</title>
         <text>for ${1:variable} = ${2:from exp1}, ${3:to exp2}, ${4:increment} do
         
@@ -39,7 +39,8 @@ $0</text>
         <text-trigger>nfor</text-trigger>
     </snippet>
     
-<!--new generic for loop--><snippet id="actions.snippets.lua.function.new-numeric-for-loop" category="actions.snippets.lua/lua.code.snippets">
+<!--new generic for loop-->
+	<snippet id="actions.snippets.lua.function.new-numeric-for-loop" category="actions.snippets.lua/lua.code.snippets/lua.code.snippets.separated-newloop">
         <title>new generic for loop</title>
         <text>for ${1:var-list} in ${2:exp-list} do
         
@@ -52,7 +53,7 @@ $0</text>
     </snippet>
     
 <!--new while loop-->
-        <snippet id="actions.snippets.lua.function.new-generic-for-loop" category="actions.snippets.lua/lua.code.snippets">
+        <snippet id="actions.snippets.lua.function.new-generic-for-loop" category="actions.snippets.lua/lua.code.snippets/lua.code.snippets.separated-newloop">
             <title>new while loop</title>
             <text>while ${1:condition}  do
             
@@ -65,7 +66,7 @@ $0</text>
         </snippet>
         
 <!--new repeat loop-->
-                <snippet id="actions.snippets.lua.function.new-while-loop" category="actions.snippets.lua/lua.code.snippets">
+                <snippet id="actions.snippets.lua.function.new-while-loop" category="actions.snippets.lua/lua.code.snippets/lua.code.snippets.separated-newloop">
                     <title>new repeat loop</title>
                     <text>repeat
                     
