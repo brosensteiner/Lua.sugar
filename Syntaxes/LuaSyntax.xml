@@ -210,7 +210,6 @@ THE SOFTWARE.
 			        <capture number="0" name="lua.punctuation.singlequote.string.end"/>
 			    </ends-with>
 			    <subzones>
-			    	<include collection="StringsInString"/>
 			    	<include collection="Backreference_and_MagicEscape"/>
 			    	<include collection="EscapeChar"/>
 			        <include collection="Additional"/>
@@ -227,7 +226,6 @@ THE SOFTWARE.
 			        <capture number="0" name="lua.punctuation.doublequote.string.end"/>
 			    </ends-with>
 			    <subzones>
-			    	<include collection="StringsInString"/>
 			    	<include collection="Backreference_and_MagicEscape"/>
 			    	<include collection="EscapeChar"/>
 			        <include collection="Additional"/>
@@ -244,58 +242,11 @@ THE SOFTWARE.
 			        <capture number="0" name="lua.punctuation.doublequote.string.end"/>
 			    </ends-with>
 			    <subzones>
+			    	<zone name="lua.punctuation.doublequote.string">
+			    		<expression>(?&lt;!--)\[=*\[|(?&lt;!--)\]=*\]</expression>
+			    	</zone>
 			    	<include collection="Backreference_and_MagicEscape"/>
 			        <include collection="Additional"/>
-			    </subzones>
-			</zone>
-		
-		</collection>
-		
-		<collection name="StringsInString">
-		
-			<zone name="lua.string.quoted.single">
-			    <starts-with>
-			        <expression>(?&lt;!"|')'(?!"|')</expression>
-			        <capture number="0" name="lua.punctuation.singlequote.string.begin"/>
-			    </starts-with>
-			    <ends-with>
-			        <expression>'</expression>
-			        <capture number="0" name="lua.punctuation.singlequote.string.end"/>
-			    </ends-with>
-			    <subzones>
-			    	<include collection="StringsInString"/>
-			    	<include collection="Backreference_and_MagicEscape"/>
-			    	<include collection="EscapeChar"/>
-			    </subzones>
-			</zone>
-			
-			<zone name="lua.string.quoted.double">
-			    <starts-with>
-			        <expression>(?&lt;!'|")"(?!"|')</expression>
-			        <capture number="0" name="lua.punctuation.doublequote.string.begin"/>
-			    </starts-with>
-			    <ends-with>
-			        <expression>"</expression>
-			        <capture number="0" name="lua.punctuation.doublequote.string.end"/>
-			    </ends-with>
-			    <subzones>
-			    	<include collection="StringsInString"/>
-			    	<include collection="Backreference_and_MagicEscape"/>
-			    	<include collection="EscapeChar"/>
-			    </subzones>
-			</zone>
-			
-			<zone name="lua.string.quoted.multiline">
-			    <starts-with>
-			        <expression>(?&lt;!--)\[(=*)\[</expression>
-			        <capture number="0" name="lua.punctuation.doublequote.string.begin"/>
-			    </starts-with>
-			    <ends-with>
-			        <expression>(?&lt;!--)\]\1\]</expression>
-			        <capture number="0" name="lua.punctuation.doublequote.string.end"/>
-			    </ends-with>
-			    <subzones>
-			    	<include collection="StringsInString"/>
 			    </subzones>
 			</zone>
 		
