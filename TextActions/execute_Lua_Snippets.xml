@@ -27,15 +27,15 @@ THE SOFTWARE.
 <action-recipes>
     <action id="actions.snippets.lua.execute-script" category="actions.snippets.lua/lua.separated-execute">
         <class>TEALoader</class>
-			<title>execute Lua script</title>
+			<title>execute Lua script in Terminal</title>
 			<key-equivalent>cmd option r</key-equivalent>
 			<setup>
-                    <script>execute_lua_script.sh</script>
-                    <input>document</input>
-                    <!--<alternate>line</alternate>-->
-                    <!--<output>text</output>-->
+				<script>execute_lua_script.sh</script>
+				<input>document</input>
+				<!--<alternate>line</alternate>-->
+				<!--<output>text</output>-->
         
-                    <!--<undo_name>My Action</undo_name>-->
+				<!--<undo_name>My Action</undo_name>-->
 			<syntax-context>language-root.lua, language-root.lua *</syntax-context>
 			<selection-context>none</selection-context>
 		</setup>
@@ -43,7 +43,7 @@ THE SOFTWARE.
     
     <action id="actions.snippets.lua.execute-script" category="tools.Snippets">
             <class>TEALoader</class>
-            <title>execute Lua script</title>
+            <title>execute Lua script in Terminal</title>
             <setup>
                 <script>execute_lua_script.sh</script>
                 <input>document</input>

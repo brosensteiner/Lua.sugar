@@ -4,6 +4,8 @@
 	<sort-template>
 		<selector>lua.separated-execute</selector>
 		<selector>actions.snippets.lua</selector>
+		<selector>actions.snippets.lua.WrapDoubleQuote</selector>
+		<selector>actions.snippets.lua.WrapSingleQuote</selector>
 		<selector>lua.separated-matched</selector>
 		<selector>lua.code.snippets</selector>
 	</sort-template>

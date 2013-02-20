@@ -58,8 +58,35 @@ THE SOFTWARE.
 	<library>
 	
 		<collection name="Comments">
-		
-			<zone name="comment.block.lua">
+			
+			<zone name="lua.comment.block.task">
+			    <starts-with>
+			        <expression>--\[(=*)\[(?=.*?\b(?i:FIX ?ME|TODO)\b)</expression>
+			        <capture number="0" name="punctuation.definition.begin"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>(--)?\]\1\]</expression>
+			        <capture number="0" name="punctuation.definition.end"/>
+			    </ends-with>
+			    <subzones>
+			    	<include collection="Markup" />
+			    </subzones>
+			</zone>
+			
+			<zone name="lua.comment.line.task">
+			    <starts-with>
+			        <expression>--(?=.*?\b(?i:FIX ?ME|TODO)\b)</expression>
+			        <capture number="0" name="punctuation.definition.begin"/>
+			    </starts-with>
+			    <ends-with>
+			        <expression>$</expression>
+			    </ends-with>
+			    <subzones>
+			    	<include collection="Markup" />
+			    </subzones>
+			</zone>
+			
+			<zone name="lua.comment.block">
 			    <starts-with>
 			        <expression>--\[(=*)\[</expression>
 			        <capture number="0" name="punctuation.definition.begin"/>
@@ -73,13 +100,13 @@ THE SOFTWARE.
 			    </subzones>
 			</zone>
 			
-			<zone name="comment.line.lua">
+			<zone name="lua.comment.line">
 			    <starts-with>
 			        <expression>--</expression>
 			        <capture number="0" name="punctuation.definition.begin"/>
 			    </starts-with>
 			    <ends-with>
-			        <expression>$[\n\r]*</expression>
+			        <expression>$</expression>
 			    </ends-with>
 			    <subzones>
 			    	<include collection="Markup" />
@@ -100,7 +127,7 @@ THE SOFTWARE.
 		
 			<zone name="lua.variable.assignment">
 				<expression>([a-zA-Z0-9_]*)\s*(=(?!=))</expression>
-				<capture number="1" name="lua.variable.assignment.name"/>
+				<capture number="1" name="lua.variable"/>
 				<capture number="2" name="lua.operator.assignment"/>
 			</zone>
 		
@@ -108,11 +135,11 @@ THE SOFTWARE.
 			    <expression>\b_[A-Z]+\b</expression>
 			</zone>
 			
-			<zone name="lua.metamethod.mode">
+			<zone name="lua.method.mode">
 				<expression>\b__mode\b</expression>
 			</zone>
 			
-			<zone name="lua.metamethod"><!--should be sufficient for general catching off Lua- and user defined metamethods-->
+			<zone name="lua.method"><!--should be sufficient for general catching off Lua- and user defined metamethods-->
 				<expression>\b__[a-zA-Z0-9_]+\b</expression>
 			</zone>
 		
@@ -524,7 +551,7 @@ THE SOFTWARE.
         <collection name="Numeric">
  
         	<zone name="lua.numeric.hexadecimal">
-        	    <expression>\b0(x|X)[a-fA-F\d]+(\.[a-fA-F\d]+)?((p|P)(-|\+)\d+)?\b</expression>
+        	    <expression>\b0(x|X)\h+(\.\h+)?((p|P)(-|\+)\d+)?\b</expression>
         	</zone>
         	<zone name="lua.numeric">
         	    <expression>\b(\d+(\.\d+)?([eE]-?\d+)?|\.\d+([eE]-?\d+)?)\b</expression>
@@ -581,7 +608,7 @@ THE SOFTWARE.
         	<zone name="lua.keyword.other.collectgarbage">
         		<expression>(?&lt;="|')(stop|restart|collect|count|step|setpause|setstepmul)(?="|')</expression>
         	</zone>
-        	<zone name="lua.keyword.other.metamethod.mode">
+        	<zone name="lua.keyword.other.method.mode">
         		<expression>(?&lt;="|')(k|v|kv|vk)(?="|')</expression>
         	</zone>
 			<zone name="lua.keyword.character-class">
