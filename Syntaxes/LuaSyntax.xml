@@ -29,7 +29,7 @@ THE SOFTWARE.
     <zones>
     
     	<zone name="lua.comment.shebang">
-    	    <expression>^(#!).*?\blua\b.*?$[\n\r]*</expression>
+    	    <expression>^(#!).*?\blua\b.*?$</expression>
     	    <capture number="1" name="punctuation.definition.begin"/>
     	</zone>
     	
@@ -92,7 +92,7 @@ THE SOFTWARE.
 			        <capture number="0" name="punctuation.definition.begin"/>
 			    </starts-with>
 			    <ends-with>
-			        <expression>(--)?\]\1\]</expression>
+			        <expression>(?:--)?\]\1\]</expression>
 			        <capture number="0" name="punctuation.definition.end"/>
 			    </ends-with>
 			    <subzones>
@@ -180,7 +180,7 @@ THE SOFTWARE.
 		    </zone>
 		    
 		    <zone name="lua.keyword.control.rest">
-		        <expression>\b(return|elseif|else|do)\b</expression>
+		        <expression>\b(return|else(?:if)?|do)\b</expression>
 		    </zone>
 		    
 		    <zone name="lua.storage.type.local"><!--don´t know where to put it else - not that important-->
@@ -316,7 +316,7 @@ THE SOFTWARE.
 		
 			<zone name="lua.container.library-function-call.magical"><!--special, because of magical character matching in patterns-->
                 <starts-with>
-                    <expression>(string)(\.)(find|gsub|match|gmatch)\s*(\()</expression>
+                    <expression>(string)(\.)(find|g(?:sub|match)|match)\s*(\()</expression>
                     <capture number="1" name="lua.function-call.library-call"/>
                     <capture number="2" name="lua.punctuation.delimiter.period"/>
                     <capture number="3" name="lua.function-call"/>
@@ -517,26 +517,26 @@ THE SOFTWARE.
         
         <collection name="LuaLanguage">
         
-        	<zone name="lua.constant.language.require">
+        	<zone name="lua.constant.require">
         	    <expression>\b(require)\b</expression>
         	</zone>
         
-        	<zone name="lua.constant.language.math-constants">
+        	<zone name="lua.constant.math-constants">
         	    <expression>\b(math)(\.)(pi|huge)\b</expression>
         	    <capture number="1" name="lua.function-call.library-call"/>
         	    <capture number="2" name="lua.punctuation.delimiter.period"/>
         	</zone>
         
-            <zone name="lua.constant.language.vararg">
+            <zone name="lua.constant.vararg">
                 <expression>(?&lt;![.])(\.{3})(?!\.)</expression>
             </zone>
             
-            <zone name="lua.constant.language.boolean-values">
+            <zone name="lua.constant.boolean-values">
                 <expression>\b(false|nil|true)\b</expression>
-                <capture number="1" name="lua.constant.language.boolean-values"/>
+                <capture number="1" name="lua.constant.boolean-values"/>
             </zone>
             
-            <zone name="lua.constant.language.predefined-streams">
+            <zone name="lua.constant.predefined-streams">
             	<expression>\b(io)(\.)(std(in|out|err)\b)</expression>
             	<capture number="1" name="lua.function-call.library-call"/>
             	<capture number="2" name="lua.punctuation.delimiter.period"/>
@@ -560,17 +560,19 @@ THE SOFTWARE.
         </collection>
         
         <collection name="GeneralWord">
-        	<zone name="lua.language.word"> <!--for better color highlighting we capture all words, so we can make nice definitions in Lua.css-->
+        	<zone name="lua.word"> <!--for better color highlighting we capture all words, so we can make nice definitions in Lua.css-->
         	    <expression>\b[a-zA-Z0-9_]+\b</expression>
         	</zone>
         </collection>
         
         <collection name="EscapeChar">
-        	<zone name="lua.escape.character.byte">
-        	    <expression>\\x\d{2}|\\\d{1,3}</expression>
+        	<zone name="lua.escape.byte">
+        	    <expression>(\\)(x\d{2}|\d{1,3})</expression>
+        	    <capture number="1" name="lua.punctuation.delimiter.backslash"/>
         	</zone>
-        	<zone name="lua.escape.character">
-        	    <expression>\\[abfnrtv\W'"\!$%&amp;]</expression>
+        	<zone name="lua.escape">
+        	    <expression>(\\)[abfnrtv\W'"\!$%&amp;]</expression>
+        	    <capture number="1" name="lua.punctuation.delimiter.backslash"/>
         	</zone>
         </collection>
         
@@ -590,7 +592,7 @@ THE SOFTWARE.
         	</zone> 
         	        
         	<zone name="lua.keyword.other.io-read">
-        		<expression>(?&lt;="|')(\*all|\*line|\*number|\*a|\*l|\*n)(?="|')</expression>
+        		<expression>(?&lt;="|')(\*(?:all|line|number|a|l|n))(?="|')</expression>
         	</zone>
         	<zone name="lua.keyword.other.io-popen">
         		<expression>(?&lt;="|')(r|w)(?="|')</expression>
@@ -606,7 +608,7 @@ THE SOFTWARE.
         		<expression>(?&lt;="|')(set|cur|end)(?="|')</expression>
         	</zone>
         	<zone name="lua.keyword.other.collectgarbage">
-        		<expression>(?&lt;="|')(stop|restart|collect|count|step|setpause|setstepmul)(?="|')</expression>
+        		<expression>(?&lt;="|')(stop|restart|co(?:llect|unt)|s(?:tep|et(?:pause|stepmul)))(?="|')</expression>
         	</zone>
         	<zone name="lua.keyword.other.method.mode">
         		<expression>(?&lt;="|')(k|v|kv|vk)(?="|')</expression>

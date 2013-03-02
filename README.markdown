@@ -4,10 +4,6 @@ this sugar has the goal to be the ultimate "Lua Espresso Kit" (complete code-sen
 
 As of the 05.02.2013 Lua 5.2 is fully supported (deprecated functions still "codesensed").
 
-<!---**IMPORTANT:** In order to use some of the text actions the [ShellActions-sugar](https://github.com/onecrayon/ShellActions-sugar) is needed
-//and if you want regex syntax highlighting in "regexp" and "regsub" commands you need the [regex.sugar](https://github.com/elliottcable/regex.sugar)
--->
-
 ## Installation
 
 Type the following in terminal:
