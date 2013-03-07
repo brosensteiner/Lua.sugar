@@ -349,29 +349,12 @@ THE SOFTWARE.
                 </subzones>
             </zone>
             
-            <zone name="lua.container.library-function-call.io-read">
-                <starts-with>
-                    <expression>(?&lt;=\.|:)(read)\s*(\()</expression>
-                    <capture number="1" name="lua.function-call"/>
-                    <capture number="2" name="lua.open-parenthesis"/>
-                </starts-with>
-                <ends-with>
-                    <expression>\)</expression>
-                    <capture number="0" name="lua.close-parenthesis"/>
-                </ends-with>
-                <subzones name="lua.function-argument.io-read">
-                  	<include syntax="language-root.lua"/>
-                </subzones>
-            </zone>
-            
             <zone name="lua.container.library-function-call.io-open">
                 <starts-with>
-                    <expression>(io)(?:(\.)|(:))(open)\s*(\()</expression>
-                    <capture number="1" name="lua.function-call.library-call"/>
-                    <capture number="2" name="lua.punctuation.delimiter.period"/>
-                    <capture number="3" name="lua.punctuation.delimiter.colon"/>
-                    <capture number="4" name="lua.function-call"/>
-                    <capture number="5" name="lua.open-parenthesis"/>
+                    <expression>(\.)(open)\s*(\()</expression>
+                    <capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.function-call"/>
+                    <capture number="3" name="lua.open-parenthesis"/>
                 </starts-with>
                 <ends-with>
                     <expression>\)</expression>
@@ -384,12 +367,10 @@ THE SOFTWARE.
             
             <zone name="lua.container.library-function-call.io-popen">
                 <starts-with>
-                    <expression>(io)(?:(\.)|(:))(popen)\s*(\()</expression>
-                    <capture number="1" name="lua.function-call.library-call"/>
-                    <capture number="2" name="lua.punctuation.delimiter.period"/>
-                    <capture number="3" name="lua.punctuation.delimiter.colon"/>
-                    <capture number="4" name="lua.function-call"/>
-                    <capture number="5" name="lua.open-parenthesis"/>
+                    <expression>(\.)(popen)\s*(\()</expression>
+					<capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.function-call"/>
+                    <capture number="3" name="lua.open-parenthesis"/>
                 </starts-with>
                 <ends-with>
                     <expression>\)</expression>
@@ -399,12 +380,82 @@ THE SOFTWARE.
                   	<include syntax="language-root.lua"/>
                 </subzones>
             </zone>
+                        
+            <zone name="lua.container.library-function-call.file-close">
+                <starts-with>
+                    <expression>(?:(\.)|(:))(close)\s*(\()</expression>
+                    <capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.punctuation.delimiter.colon"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.file-close">
+                  	<include syntax="language-root.lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function-call.file-flush">
+                <starts-with>
+                    <expression>(?:(\.)|(:))(flush)\s*(\()</expression>
+                    <capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.punctuation.delimiter.colon"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.file-flush">
+                  	<include syntax="language-root.lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function-call.file-lines">
+                <starts-with>
+                    <expression>(?:(\.)|(:))(lines)\s*(\()</expression>
+                    <capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.punctuation.delimiter.colon"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.file-read">
+                  	<include syntax="language-root.lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function-call.file-read">
+                <starts-with>
+                    <expression>(?:(\.)|(:))(read)\s*(\()</expression>
+                    <capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.punctuation.delimiter.colon"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.file-read">
+                  	<include syntax="language-root.lua"/>
+                </subzones>
+            </zone>
             
             <zone name="lua.container.library-function-call.file-seek">
                 <starts-with>
-                    <expression>(?&lt;=:)(seek)\s*(\()</expression>
-                    <capture number="1" name="lua.function-call"/>
-                    <capture number="2" name="lua.open-parenthesis"/>
+                    <expression>(?:(\.)|(:))(seek)\s*(\()</expression>
+                    <capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.punctuation.delimiter.colon"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.open-parenthesis"/>
                 </starts-with>
                 <ends-with>
                     <expression>\)</expression>
@@ -417,15 +468,34 @@ THE SOFTWARE.
             
             <zone name="lua.container.library-function-call.setvbuf">
             	<starts-with>
-                    <expression>(?&lt;=:)(setvbuf)\s*(\()</expression>
-                    <capture number="1" name="lua.function-call"/>
-                    <capture number="2" name="lua.open-parenthesis"/>
+                    <expression>(?:(\.)|(:))(setvbuf)\s*(\()</expression>
+                    <capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.punctuation.delimiter.colon"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.open-parenthesis"/>
                 </starts-with>
                 <ends-with>
                     <expression>\)</expression>
                     <capture number="0" name="lua.close-parenthesis"/>
                 </ends-with>
                 <subzones name="lua.function-argument.file-setvbuf">
+                  	<include syntax="language-root.lua"/>
+                </subzones>
+            </zone>
+            
+            <zone name="lua.container.library-function-call.write">
+            	<starts-with>
+                    <expression>(?:(\.)|(:))(write)\s*(\()</expression>
+                    <capture number="1" name="lua.punctuation.delimiter.period"/>
+                    <capture number="2" name="lua.punctuation.delimiter.colon"/>
+                    <capture number="3" name="lua.function-call"/>
+                    <capture number="4" name="lua.open-parenthesis"/>
+                </starts-with>
+                <ends-with>
+                    <expression>\)</expression>
+                    <capture number="0" name="lua.close-parenthesis"/>
+                </ends-with>
+                <subzones name="lua.function-argument.file-write">
                   	<include syntax="language-root.lua"/>
                 </subzones>
             </zone>
@@ -446,7 +516,7 @@ THE SOFTWARE.
                 	    	    	    	
             <zone name="lua.container.lua-function-call">
                 <starts-with>
-                    <expression>(?&lt;=:|\.|)([a-zA-Z0-9_]+)\s*(\()</expression>
+                    <expression>([a-zA-Z0-9_]+)\s*(\()</expression>
                     <capture number="1" name="lua.function-call"/>
                     <capture number="2" name="lua.open-parenthesis"/>
                 </starts-with>
@@ -498,10 +568,9 @@ THE SOFTWARE.
         	<zone name="lua.operator.concatenation">
         	    <expression>(?&lt;!\.)\.{2}(?!\.)</expression>
         	</zone>
-        	
-        	<zone name="lua.punctuation.delimiter.colon">
+        	<!--<zone name="lua.punctuation.delimiter.colon">
         	    <expression>(?&lt;=[a-zA-Z0-9_]):(?=[a-zA-Z0-9_])</expression>
-        	</zone>
+        	</zone>-->
         	
         	<zone name="lua.punctuation.delimiter.period">
         	    <expression>(?&lt;=[a-zA-Z0-9_])\.(?=[a-zA-Z0-9_])</expression>
@@ -534,12 +603,6 @@ THE SOFTWARE.
             <zone name="lua.constant.boolean-values">
                 <expression>\b(false|nil|true)\b</expression>
                 <capture number="1" name="lua.constant.boolean-values"/>
-            </zone>
-            
-            <zone name="lua.constant.predefined-streams">
-            	<expression>\b(io)(\.)(std(in|out|err)\b)</expression>
-            	<capture number="1" name="lua.function-call.library-call"/>
-            	<capture number="2" name="lua.punctuation.delimiter.period"/>
             </zone>
             
             <zone name="lua.punctuation.delimiter.comma"> <!--for better color highlighting we capture all commas, so we can make nice definitions in Lua.css-->
