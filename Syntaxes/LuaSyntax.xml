@@ -613,11 +613,14 @@ THE SOFTWARE.
         
         <collection name="Numeric">
  
-        	<zone name="lua.numeric.hexadecimal">
+        	<zone name="lua.constant.numeric.hexadecimal">
         	    <expression>\b0(x|X)\h+(\.\h+)?((p|P)(-|\+)\d+)?\b</expression>
         	</zone>
-        	<zone name="lua.numeric">
-        	    <expression>\b(\d+(\.\d+)?([eE]-?\d+)?|\.\d+([eE]-?\d+)?)\b</expression>
+        	<zone name="lua.constant.numeric.float">
+        	    <expression>\b(\d+(\.\d+)([eE]-?\d+)?|\.\d+([eE]-?\d+)?)\b</expression>
+        	</zone>
+        	<zone name="lua.constant.numeric.integer">
+        	    <expression>\b(\d+([eE]-?\d+)?)\b</expression>
         	</zone>
         	
         </collection>
