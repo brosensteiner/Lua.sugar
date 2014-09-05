@@ -286,7 +286,7 @@ THE SOFTWARE.
 			        <expression>(\blocal\s+)?(\bfunction\b)\s*([a-zA-Z0-9\.:_]+)\s*(\()</expression>
 			        <capture number="1" name="lua.keyword.local"/>
 			        <capture number="2" name="lua.keyword.function"/>
-			        <capture number="3" name="lua.function.name"/>
+			        <capture number="3" name="lua.name"/>
 			        <capture number="4" name="lua.open-parenthesis"/>
 			    </starts-with>
 			    <ends-with>
@@ -302,7 +302,7 @@ THE SOFTWARE.
 				<expression>(\blocal\s+)?(\bfunction\b)\s*([a-zA-Z0-9\.:_]+)</expression>
 				<capture number="1" name="lua.keyword.local"/>
 				<capture number="2" name="lua.keyword.function"/>
-				<capture number="3" name="lua.function.name"/>
+				<capture number="3" name="lua.name"/>
 			</zone>
 			<zone name="lua.container.function.definition-anonymous">
 				<expression>(\blocal\s+)?(\bfunction\b)</expression>
