@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <setting name="autopair-opt-in">
+        <syntax-context>lua, lua :not(comment, comment *, string, string :not(punctuation.end))</syntax-context>
+        <value>[]{}</value>
+    </setting>
+</settings>

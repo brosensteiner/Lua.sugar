@@ -5,7 +5,7 @@
     <key>CFBundleName</key>
     <string>Lua.sugar</string>
     <key>CFBundleIdentifier</key>
-    <string>com.rosensteiner.sugar.Lua</string>
+    <string>com.brosensteiner.Espresso.Sugar.Lua</string>
     <key>CFBundleVersion</key>
     <string>0.9</string>
     <!--No need to modify these values-->

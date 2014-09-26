@@ -4,7 +4,7 @@
 @author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
 @copyright 	 The MIT License
 
-Copyright (c) 2012 Bernhard Rosensteiner
+Copyright (c) 2014 Bernhard Rosensteiner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ THE SOFTWARE.
 	
 	<recipe name="lua.container.function.named">
 		<start-selector>lua.function.definition-named:has-child(name:capture(name)):capture(itemizer-firstused)</start-selector>
-		<end-selector>lua.keyword.control.end</end-selector>
+		<end-selector>lua.keyword.end</end-selector>
 		<subrecipes>
 			<include recipe="lua.container.function.named" />
 			<include-root-recipes/>
@@ -37,7 +37,7 @@ THE SOFTWARE.
 	<recipe name="lua.container.function.anonymous">
 		<class>ESJSAnonymousFunctionItem</class>
 		<start-selector>lua.function.definition-anonymous:capture(itemizer-firstused)</start-selector>
-		<end-selector>lua.keyword.control.end</end-selector>
+		<end-selector>lua.keyword.end</end-selector>
 		<subrecipes>
 			<include recipe="lua.container.function.named" />
 			<include-root-recipes/>
@@ -47,7 +47,7 @@ THE SOFTWARE.
 	<recipe name="lua.container.control.if">
 		<class>ESJSControlBlockItem</class>
 		<start-selector>lua.keyword.control[text="if"]:capture(itemizer-firstused) + *:capture(open-parameters) ~ keyword.control.then:capture(close-parameters)</start-selector>
-		<end-selector>lua.keyword.control.end</end-selector>
+		<end-selector>lua.keyword.end</end-selector>
 		<subrecipes>
 			<include-root-recipes/>
 		</subrecipes>
@@ -61,7 +61,7 @@ THE SOFTWARE.
 	<recipe name="lua.container.control.while">
 		<class>ESJSControlBlockItem</class>
 		<start-selector>lua.keyword.control[text="while"]:capture(itemizer-firstused) + *:capture(open-parameters) ~ keyword.control[text="do"]:capture(close-parameters)</start-selector>
-		<end-selector>lua.keyword.control.end</end-selector>
+		<end-selector>lua.keyword.end</end-selector>
 		<subrecipes>
 			<include-root-recipes/>
 		</subrecipes>
@@ -79,7 +79,7 @@ THE SOFTWARE.
 	<recipe name="lua.container.control.for">
 		<class>ESJSControlBlockItem</class>
 		<start-selector>lua.keyword.control[text="for"]:capture(itemizer-firstused) + *:capture(open-parameters) ~ keyword.control[text="do"]:capture(close-parameters)</start-selector>
-		<end-selector>lua.keyword.control.end</end-selector>
+		<end-selector>lua.keyword.end</end-selector>
 		<subrecipes>
 			<include-root-recipes/>
 		</subrecipes>

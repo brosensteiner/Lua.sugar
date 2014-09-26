@@ -4,7 +4,7 @@
 @author 	 Bernhard Rosensteiner <brosensteiner@gmail.com>
 @copyright 	 The MIT License
 
-Copyright (c) 2012 Bernhard Rosensteiner
+Copyright (c) 2014 Bernhard Rosensteiner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ THE SOFTWARE.
     <zones>
     
     	<zone name="lua.comment.shebang">
-    	    <expression>^(#!).*?\blua\b.*?$</expression>
+    	    <expression>^(#!).*?\blua\b.*?$[\n\r]*</expression>
     	    <capture number="1" name="punctuation.definition.begin"/>
     	</zone>
     	
@@ -147,7 +147,7 @@ THE SOFTWARE.
 			    <expression>(?&lt;![^.]\.|:)\b(self)\b</expression>
 			</zone>
 			
-			<zone name="lua.variable.dummy"><!--not valid syntax, but good behaviour-->
+			<zone name="lua.variable.dummy"><!--not valid syntax, but good coding practice-->
 			    <expression>\b_\b</expression>
 			</zone>
 			
@@ -553,7 +553,7 @@ THE SOFTWARE.
         	    <expression>=</expression>
         	</zone>
         	
-        	<zone name="lua.operator.logical">
+        	<zone name="lua.operator.comparison">
         	    <expression>\b(and|or|not)\b</expression>
         	</zone>
         	        	

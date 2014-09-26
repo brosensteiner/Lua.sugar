@@ -4,6 +4,10 @@ this sugar has the goal to be the ultimate "Lua Espresso Kit" (complete code-sen
 
 As of the 05.02.2013 Lua 5.2 is fully supported (deprecated functions still "codesensed").
 
+**IMPORTANT:** Lua.sugar needs Autopair sugar for automatic character pairing: [Autopair.sugar](https://github.com/onecrayon/Autopair-sugar). The [ShellActions.sugar](https://github.com/onecrayon/ShellActions-sugar) for some actions is needed too.
+
+
+
 ## Installation
 
 Type the following in terminal:
