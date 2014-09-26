@@ -2,6 +2,6 @@
 <settings>
     <setting name="autopair-opt-in">
         <syntax-context>lua, lua :not(comment, comment *, string, string :not(punctuation.end))</syntax-context>
-        <value>[]{}</value>
+        <value>[]{}()</value>
     </setting>
 </settings>
